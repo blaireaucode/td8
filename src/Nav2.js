@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import L from "./helpers/L";
 
 class Nav extends Component {
 
@@ -10,8 +11,9 @@ class Nav extends Component {
                     toto
                 </div>
                 <div id="sidebar">
-                    okokok
-                    okokok
+                    okokok<p/>
+                    menu2<p/>
+                    <L to={'/about'}>about</L>
                 </div>
             </div>
         );

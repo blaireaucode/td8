@@ -6,6 +6,7 @@ import store from "./helpers/store";
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import ScreenDebug from "./ScreenDebug";
 import Nav from "./Nav2";
+import ScreenAbout from "./ScreenAbout";
 
 
 const theme = createTheme(Theme);
@@ -24,11 +25,11 @@ function App() {
     return (
         <Provider store={store}>
             <BrowserRouter>
-                {/*<Nav/>*/}
+                <Nav/>
                 <div className="App">
-                    ok
                     <Routes>
                         <Route path="/" element={<ScreenDebug/>}/>
+                        <Route path="/about" element={<ScreenAbout/>}/>
                     </Routes>
                 </div>
 
