@@ -9,24 +9,29 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import ScreenDebug from "./ScreenDebug";
 import Layout from "./Layout";
 import LayoutBothBar from "./LayoutBothBar";
+import {slide as Menu} from 'react-burger-menu'
+import Nav from "./Nav2";
 
 
 const theme = createTheme(Theme);
 
+const classes = {}
+
 
 function App() {
+
     return (
         <Provider store={store}>
-            <div className="App">
-                {/*<ThemeProvider theme={theme}>*/}
-                {/*<Routes/>*/}
-                {/*</ThemeProvider>*/}
-                <BrowserRouter>
+            <BrowserRouter>
+                <Nav/>
+                <div className="App">
                     <Routes>
                         <Route path="/" element={<ScreenDebug/>}/>
                     </Routes>
-                </BrowserRouter>
-            </div>
+                </div>
+
+            </BrowserRouter>
+
         </Provider>
     )
         ;
