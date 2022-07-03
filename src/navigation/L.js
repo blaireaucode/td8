@@ -9,7 +9,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {mapDispatchToProps, mapStateToProps} from './default_props'
+import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props'
 
 class L extends Component {
 
