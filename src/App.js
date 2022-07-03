@@ -27,6 +27,9 @@ function App() {
                 {/*<Nav/>*/}
                 <div className="App">
                     ok
+                    <Routes>
+                        <Route path="/" element={<ScreenDebug/>}/>
+                    </Routes>
                 </div>
 
             </BrowserRouter>
