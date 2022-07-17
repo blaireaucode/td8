@@ -9,13 +9,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props'
+import RollDice from "../components/RollDice";
 
 class ScreenDebug extends Component {
 
     render() {
         return (
             <div>
-                I am debug screen
+                I am debug screen. <p/>
+
+                <RollDice/>
             </div>
         );
     }
