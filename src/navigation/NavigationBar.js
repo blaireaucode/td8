@@ -9,8 +9,6 @@
 import React, {Component} from 'react';
 import TopBar from "./TopBar";
 import LeftBar from "./LeftBar";
-import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import {connect} from "react-redux";
 
 class NavigationBar extends Component {
 
@@ -24,4 +22,4 @@ class NavigationBar extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
+export default NavigationBar;

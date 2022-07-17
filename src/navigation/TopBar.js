@@ -9,10 +9,9 @@
 import React, {Component} from 'react';
 import L from "./L";
 import C from "../helpers/C";
-import {connect} from "react-redux";
-import {mapDispatchToProps, mapStateToProps} from "../helpers/default_props";
 
 class TopBar extends Component {
+
 
     render() {
         return (
@@ -23,4 +22,4 @@ class TopBar extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopBar);
+export default TopBar;

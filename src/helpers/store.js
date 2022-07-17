@@ -1,34 +1,36 @@
 /*
- * Copyright 2022
+ * Copyright 2019
  *
  * Use of this source code is governed by a MIT-style
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
 
-import {configureStore} from '@reduxjs/toolkit'
-import * as at from './action_types';
-import * as gr from './action_reducers';
-import {create_new_game} from "./helpers_hero";
+import {createStore} from 'redux'
+import * as at from './action_types'
+import * as gr from './action_reducers'
 
-const store = setupStore();
-export const store_name = 'td8_save';
-export default store;
+//import {create_new_game} from "./helpers_hero";
+
+const store = setupStore()
+export const store_name = 'td8_save'
+export default store
 
 export function defaultSaves() {
+    /*
     // create a new game
     const new_game = create_new_game();
     // create a default list of saves
     let saves = {current: new_game.id};
     saves[new_game.id] = new_game;
     return saves;
+
+     */
 }
 
 export function read_saves_in_store() {
-    const ls = global.localStorage.getItem('td8_save');
-    // console.log('Read in local storage: ', ls)
-    if (ls !== 'undefined' && ls !== null) {
-        return JSON.parse(ls);
+    if (global.localStorage.getItem('td8_save') !== null) {
+        return JSON.parse(global.localStorage.getItem('td8_save'));
     } else {
         console.log('Cannot find local storage td8_save : use default');
         const saves = defaultSaves();
@@ -39,9 +41,13 @@ export function read_saves_in_store() {
 
 export function setupStore() {
     // read from local store (if exist), or start with default
-    const saves = read_saves_in_store();
+    /*const saves = read_saves_in_store();
     const initialState = saves[saves['current']];
-    console.log('load save', initialState);
+
+     */
+    const initialState = {};
+
+    //console.log('load save', initialState);
 
     // list of action
     const rootReducer = (state = initialState, action) => {
@@ -53,6 +59,6 @@ export function setupStore() {
         }
     };
 
-    return configureStore({reducer: rootReducer});
+    return createStore(rootReducer);
 }
 

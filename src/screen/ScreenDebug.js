@@ -7,23 +7,15 @@
  */
 
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import RollDice from "../dice/RollDice";
-
+import {connect} from 'react-redux'
+import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props'
 
 class ScreenDebug extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        console.log('state', this.state);
         return (
             <div>
-                I am debug screen. <p/>
-                <RollDice/>
+                I am debug screen
             </div>
         );
     }

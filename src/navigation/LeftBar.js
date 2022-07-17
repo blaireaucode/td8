@@ -8,15 +8,14 @@
 
 import React, {Component} from 'react';
 import L from "./L";
-import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import {connect} from "react-redux";
 
 class LeftBar extends Component {
+
 
     render() {
         return (
             <div id="sidebar">
-                <div className="vertical_line"/>
+                <div className="vl"/>
                 <L to={'/'}>root</L><p/>
                 <L to={'/debug'}>debug</L><p/>
                 <L to={'/about'}>about</L><p/>
@@ -25,4 +24,4 @@ class LeftBar extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeftBar);
+export default LeftBar;
