@@ -1,5 +1,5 @@
 /*
- * Copyright 2018
+ * Copyright 2022
  *
  * Use of this source code is governed by a MIT-style
  * license that can be found in the LICENSE file or at
@@ -26,8 +26,7 @@ async function save_to_store(game) {
     // update the date
     let gg = game;
     gg = update(gg, {date: {$set: new Date()}});
-
-    //console.log('save',gg)
+    // console.log('save',gg)
 
     // replace current save
     let saves = st.read_saves_in_store();

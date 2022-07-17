@@ -8,17 +8,15 @@
 
 import './App.css';
 import {Provider} from 'react-redux';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {createTheme} from '@mui/material/styles';
 import Theme from './theme.json';
 import store from "./helpers/store";
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import NavigationBar from "./navigation/NavigationBar";
-import AllRoutes from "./AllRoutes";
+import AllRoutes from "./navigation/AllRoutes";
 
-
-const theme = createTheme(Theme);
-
-const classes = {}
+const theme = createTheme(Theme); //FIXME later
+const classes = {}; // FIXME later
 
 function App() {
 
@@ -29,12 +27,9 @@ function App() {
                 <div className="App">
                     <AllRoutes/>
                 </div>
-
             </BrowserRouter>
-
         </Provider>
-    )
-        ;
+    );
 }
 
 export default App;
