@@ -74,8 +74,13 @@ Dices animation
 #dice-box,
 #dice-box canvas {
     position: fixed;
+    top:3rem;
+    left:7rem;
     pointer-events: none;
     z-index: 100;
-    width: 70%;
-    height: 70%;
+    width: 90%;
+    height: 90%;
+    max-width: 500px;
+    max-height: 500px;
+    aspect-ratio: auto 1 / 1;
 }
