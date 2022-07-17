@@ -20,7 +20,7 @@ const diceBox = new DiceBox("#dice-box",
         throwForce: 4,
         spinForce: 5,
         lightIntensity: 0.9,
-        scale:20
+        scale: 5
     }
 );
 

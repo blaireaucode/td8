@@ -13,7 +13,12 @@ import RollDice from "../components/RollDice";
 
 class ScreenDebug extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+        console.log('state', this.state);
         return (
             <div>
                 I am debug screen. <p/>
