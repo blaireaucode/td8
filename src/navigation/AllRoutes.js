@@ -14,6 +14,7 @@ import ScreenDebug from "../screen/ScreenDebug";
 import ScreenAbout from "../screen/ScreenAbout";
 import ScreenHero from "../screen/ScreenHero";
 import ScreenMap from "../screen/ScreenMap";
+import ScreenGames from "../screen/ScreenGames";
 
 class AllRoutes extends Component {
 
@@ -23,6 +24,7 @@ class AllRoutes extends Component {
                 <Route path="/" element={<ScreenHero/>}/>
                 <Route path="/hero" element={<ScreenHero/>}/>
                 <Route path="/map" element={<ScreenMap/>}/>
+                <Route path="/games" element={<ScreenGames/>}/>
                 <Route path="/about" element={<ScreenAbout/>}/>
                 <Route path="/debug" element={<ScreenDebug/>}/>
             </Routes>

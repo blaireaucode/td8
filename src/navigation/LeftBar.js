@@ -18,6 +18,7 @@ class LeftBar extends Component {
                 <div className="vl"/>
                 <L to={'/map'}>Carte</L><p/>
                 <L to={'/hero'}>Personnage</L><p/>
+                <L to={'/games'}>Sauvegarde</L><p/>
                 <L to={'/about'}>A propos</L><p/>
                 <L to={'/debug'}>Debug</L><p/>
             </div>

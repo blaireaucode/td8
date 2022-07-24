@@ -6,26 +6,37 @@
  * https://opensource.org/licenses/MIT.
  */
 
-import {createStore} from 'redux'
-import * as at from './action_types'
-import * as gr from './action_reducers'
-
-//import {create_new_game} from "./helpers_hero";
+import {configureStore} from '@reduxjs/toolkit';
+import * as at from './action_types';
+import * as gr from './action_reducers';
+import {create_new_game} from "./helpers_game";
 
 const store = setupStore()
 export const store_name = 'td8_save'
 export default store
 
-export function defaultSaves() {
+export function setupStore() {
     /*
-    // create a new game
-    const new_game = create_new_game();
-    // create a default list of saves
-    let saves = {current: new_game.id};
-    saves[new_game.id] = new_game;
-    return saves;
-
+        Called at the beginning of the App
      */
+    // read from local store (if exist), or start with default
+    const saves = read_saves_in_store();
+    console.log('load saves', saves);
+    const initialState = saves[saves['current']];
+    //const initialState = {};
+    //console.log('load save', initialState);
+
+    // list of action
+    const rootReducer = (state = initialState, action) => {
+        switch (action.type) {
+            case at.SET_GAME:
+                return gr.set_game(state, action.value);
+            default:
+                return state;
+        }
+    };
+
+    return configureStore({reducer: rootReducer})
 }
 
 export function read_saves_in_store() {
@@ -39,26 +50,14 @@ export function read_saves_in_store() {
     }
 }
 
-export function setupStore() {
-    // read from local store (if exist), or start with default
-    /*const saves = read_saves_in_store();
-    const initialState = saves[saves['current']];
 
-     */
-    const initialState = {};
-
-    //console.log('load save', initialState);
-
-    // list of action
-    const rootReducer = (state = initialState, action) => {
-        switch (action.type) {
-            case at.SET_GAME:
-                return gr.set_game(state, action.value);
-            default:
-                return state;
-        }
-    };
-
-    return createStore(rootReducer);
+export function defaultSaves() {
+    // create a new game
+    const new_game = create_new_game();
+    // create a default list of saves
+    // and set this new game as the current one
+    let saves = {current: new_game.id};
+    saves[new_game.id] = new_game;
+    return saves;
 }
 

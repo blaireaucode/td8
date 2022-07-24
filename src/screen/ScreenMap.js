@@ -9,18 +9,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props'
-import {
-    TransformComponent,
-    TransformWrapper,
-} from "@pronestor/react-zoom-pan-pinch";
 import {MapInteractionCSS} from 'react-map-interaction';
-
 
 class ScreenMap extends Component {
 
     constructor(props) {
         super(props);
-        //this.state = {initial_scale: 1};
         this.state = {
             value: {
                 scale: 1,
@@ -32,6 +26,7 @@ class ScreenMap extends Component {
     render() {
         const {scale, translation} = this.state;
         // FIXME keep those values in the store
+        // FIXME reset button
         // console.log('state', this.state)
         return (
             <MapInteractionCSS
@@ -42,24 +37,6 @@ class ScreenMap extends Component {
         )
     }
 
-    render2() {
-        return (
-            <div><TransformWrapper>
-                <TransformComponent>
-                    <img className={'map_image'}
-                         src={'/images/map_72ppi.png'}
-                         alt={'map'}
-                         width={'100%'}
-                         align={'top'}
-                         onMouseOver={this.over}
-                         onMouseOut={this.leave}
-                         border={0}
-                    />
-                </TransformComponent>
-            </TransformWrapper>
-            </div>
-        );
-    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScreenMap)

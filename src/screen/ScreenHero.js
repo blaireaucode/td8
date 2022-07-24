@@ -13,10 +13,10 @@ import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props'
 class ScreenHero extends Component {
 
     render() {
-
+        const h = this.props.game.hero;
         return (
             <div>
-                I am in hero screen
+                I am in hero screen {h.name}
             </div>
         );
     }
