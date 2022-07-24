@@ -47,22 +47,24 @@ Navigation bars
 #sidebar {
     background-color: var(--bgnav);
     float: left;
-    width: 6rem;
+    width: 8rem;
     margin-left: 1rem;
 }
 
 #topbar {
     background-color: var(--bgnav);
+    color: var(--fgh);
     float: top;
     width: 100%;
     min-height: 3rem;
     margin-top: 4px;
-    margin-left: 8rem;
+    margin-left: 9rem;
 }
 
-.vertical_line {
+.vertical_line { /* unused for the moment */
     border-left: 1px solid dimgrey;
-    height: 9rem;
+    color: #8a0303;
+    height: 9rem; /* should be like side bar width + margin)let*/
     position: absolute;
     left: 113px;
 }
@@ -74,8 +76,8 @@ Dices animation
 #dice-box,
 #dice-box canvas {
     position: fixed;
-    top:3rem;
-    left:7rem;
+    top: 3rem;
+    left: 7rem;
     pointer-events: none;
     z-index: 100;
     width: 90%;

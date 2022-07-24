@@ -16,7 +16,7 @@ class TopBar extends Component {
     render() {
         return (
             <div id="topbar">
-                I am the top bar
+               <span className={'top_bar'}>~ La Terre des Huit ~</span>
             </div>
         );
     }

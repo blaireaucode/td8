@@ -16,9 +16,10 @@ class LeftBar extends Component {
         return (
             <div id="sidebar">
                 <div className="vl"/>
-                <L to={'/'}>root</L><p/>
-                <L to={'/debug'}>debug</L><p/>
-                <L to={'/about'}>about</L><p/>
+                <L to={'/map'}>Carte</L><p/>
+                <L to={'/hero'}>Personnage</L><p/>
+                <L to={'/about'}>A propos</L><p/>
+                <L to={'/debug'}>Debug</L><p/>
             </div>
         );
     }
