@@ -13,7 +13,7 @@ import default_game from "./default_game";
 export function create_new_game() {
     let new_game = JSON.parse(JSON.stringify(default_game))
     new_game.id = uuidv4();
-    new_game = update(new_game, {date: {$set: new Date()}});
+    new_game = update(new_game, {date: {$set: new Date().toJSON()}});
     console.log('New game', new_game);
     return new_game;
 }

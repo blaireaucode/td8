@@ -27,11 +27,9 @@ const default_game = {
         origin: 'quelque part',
         location: 'Vernillane',
         class: 'métier',
-        accomplishment: {
-            major: '?',
-            minor1: '?',
-            minor2: '?',
-        },
+        acc_major: '?',
+        acc_minor1: '?',
+        acc_minor2: '?',
         pv: '10',
         pv_max: '10',
         survival: '?'

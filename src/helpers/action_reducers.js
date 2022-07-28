@@ -25,7 +25,7 @@ async function save_to_store(game) {
 
     // update the date
     let gg = game;
-    gg = update(gg, {date: {$set: new Date()}});
+    gg = update(gg, {date: {$set: new Date().toJSON()}});
 
     //console.log('save',gg)
 

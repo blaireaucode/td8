@@ -1,14 +1,14 @@
 /*
- * Copyright 2019
+ * Copyright 2022
  *
  * Use of this source code is governed by a MIT-style
  * license that can be found in the LICENSE file or at
  * https://opensource.org/licenses/MIT.
  */
 
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {mapDispatchToProps, mapStateToProps} from './default_props'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {mapDispatchToProps, mapStateToProps} from './default_props';
 
 class C extends Component {
 
@@ -19,11 +19,7 @@ class C extends Component {
 
     render() {
         return (
-            <span style={{
-                display: 'inline-block',
-                width: this.props.width,
-                verticalAlign: 'middle'
-            }}
+            <span style={{display: 'inline-block', width: this.props.width}}
                   className={this.props.className}>
                 {this.props.children}
             </span>
