@@ -11,11 +11,14 @@ import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import InputTxt from "../components/InputTxt";
 import C from "../helpers/C";
-import PanelHero from "../components/PanelHero";
+import PanelBloc from "../components/PanelBloc";
 import L from "../navigation/L";
 import default_game from "../helpers/default_game";
-import update from "immutability-helper";
 import {update_g_options} from "../helpers/helpers_update";
+import PanelHero from "../components/PanelHero";
+import PanelAccomplishments from "../components/PanelAccomplishments";
+import PanelPV from "../components/PanelPV";
+import PanelCaract from "../components/PanelCaract";
 
 class ScreenHero extends Component {
 
@@ -55,58 +58,13 @@ class ScreenHero extends Component {
         }
         return (
             <div className="container">
-                <PanelHero name={'hero'} movable={this.state.movable}>
+                <PanelHero movable={this.state.movable}/>
 
-                    <InputTxt f={'name'} width={'30ch'}/> <br/>
+                <PanelAccomplishments movable={this.state.movable}/>
 
-                    <C width={'11ch'}>Age:</C> <InputTxt f={'age'} width={'20ch'}/> <br/>
+                <PanelPV movable={this.state.movable}/>
 
-                    <C width={'11ch'}>Origine:</C> <InputTxt f={'origin'} width={'20ch'}/> <br/>
-
-                    <C width={'11ch'}>Lieu de départ:</C> <InputTxt f={'location'} width={'20ch'}/> <br/>
-
-                    <C width={'11ch'}>Classe:</C> <InputTxt f={'class'} width={'20ch'}/>
-                </PanelHero>
-
-                <PanelHero name={'acc'} movable={this.state.movable}>
-                    Accomplissements<br/>
-                    <C width={'1ch'}/><C width={'7ch'}>Majeur:</C> <InputTxt f={'acc_major'} width={'24ch'}/> <br/>
-                    <C width={'1ch'}/><C width={'7ch'}>Mineur 1:</C> <InputTxt f={'acc_minor1'} width={'24ch'}/>
-                    <br/>
-                    <C width={'1ch'}/><C width={'7ch'}>Mineur 2:</C> <InputTxt f={'acc_minor2'} width={'24ch'}/>
-                    <br/>
-                </PanelHero>
-
-                <PanelHero name={'pv'} movable={this.state.movable}>
-                    <C width={'12ch'}>Niveau:</C>
-                    <InputTxt f={'level'} width={'5ch'} type={'number'}/><br/>
-
-                    <C width={'12ch'}>Réputation:</C>
-                    <InputTxt f={'reput'} width={'5ch'} type={'number'}/><br/>
-
-                    <C width={'12ch'}>Points de vie:</C>
-                    <InputTxt f={'pv'} width={'5ch'} type={'number'}/>
-                    <C width={'2ch'}> / </C>
-                    <InputTxt f={'pv_max'} width={'5ch'} type={'number'}/> (max)
-                </PanelHero>
-
-                <PanelHero name={'caract'} movable={this.state.movable}>
-                    <C width={'12ch'}>La robustesse:</C>
-                    <InputTxt f={'robustness'} width={'5ch'} type={'number'}/><br/>
-                    <C width={'12ch'}>L'adresse:</C>
-                    <InputTxt f={'dexterity'} width={'5ch'} type={'number'}/><br/>
-                    <C width={'12ch'}>La beauté:</C>
-                    <InputTxt f={'beauty'} width={'5ch'} type={'number'}/><br/>
-                    <br/>
-                    <C width={'12ch'}>La volonté</C>
-                    <InputTxt f={'will_power'} width={'5ch'} type={'number'}/><br/>
-                    <C width={'12ch'}>L'intelligence</C>
-                    <InputTxt f={'intelligence'} width={'5ch'} type={'number'}/><br/>
-                    <C width={'12ch'}>L'érudition</C>
-                    <InputTxt f={'erudition'} width={'5ch'} type={'number'}/><br/>
-                    <C width={'12ch'}>Le charisme</C>
-                    <InputTxt f={'charisma'} width={'5ch'} type={'number'}/><br/>
-                </PanelHero>
+                <PanelCaract movable={this.state.movable}/>
 
                 <div style={styles}>
                     <L onClick={this.toggleMove}>{txt}</L> <p/>

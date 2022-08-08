@@ -9,29 +9,24 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import MoveDiv from "./MoveDiv";
+import InputTxt from "./InputTxt";
+import C from "../helpers/C";
+import PanelBloc from "./PanelBloc";
 
 class PanelHero extends Component {
-
-    static defaultProps = {
-        movable: false
-    }
-
     render() {
-        const name = this.props.name;
-        const dname = '.' + name;
-        let t = this.props.game.options[dname];
-        if (t === undefined) t = [0, 0];
-        let color = "var(--bg)";
-        if (this.props.movable) color = "var(--bge)";
-        const styles = {transform: `translate(${t[0]}px, ${t[1]}px)`, background: color};
         return (
-            <div>
-                <div className={"movable " + name} style={styles}>
-                    {this.props.children}
-                </div>
-                <MoveDiv target={dname} movable={this.props.movable}/>
-            </div>
+            <PanelBloc name={'hero'} movable={this.props.movable}>
+                <InputTxt f={'name'} width={'30ch'}/> <br/>
+
+                <C width={'11ch'}>Age:</C> <InputTxt f={'age'} width={'20ch'}/> <br/>
+
+                <C width={'11ch'}>Origine:</C> <InputTxt f={'origin'} width={'20ch'}/> <br/>
+
+                <C width={'11ch'}>Lieu de départ:</C> <InputTxt f={'location'} width={'20ch'}/> <br/>
+
+                <C width={'11ch'}>Classe:</C> <InputTxt f={'class'} width={'20ch'}/>
+            </PanelBloc>
         );
     }
 }
