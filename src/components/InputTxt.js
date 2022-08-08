@@ -23,6 +23,11 @@ class InputTxt extends Component {
         class_name: 'field_input'
     }
 
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
     handleChange = ({target}) => {
         const g = up.update_g_hero(this.props.game, this.props.f, target.value);
         this.props.set_game(g)
@@ -36,7 +41,6 @@ class InputTxt extends Component {
         // class name (for style)
         let align = this.props.align;
         let cn = this.props.class_name;
-
         return (
             <Input className={cn}
                    disableUnderline={true}

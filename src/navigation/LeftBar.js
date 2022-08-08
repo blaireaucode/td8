@@ -11,7 +11,6 @@ import L from "./L";
 
 class LeftBar extends Component {
 
-
     render() {
         return (
             <div id="sidebar">

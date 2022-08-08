@@ -8,6 +8,7 @@
     --fglh: #0de587; /* link hover */
     --fge: #2982d2; /* edit */
     --bge: #23262d; /* background edit*/
+    --bgm: #1b1d21; /* background move*/
 
 }
 
@@ -99,15 +100,15 @@ Dices animation
 }
 
 /*-----------------------------------------------------------------------------------------------------------
-Test moveable
+Test movable
 -----------------------------------------------------------------------------------------------------------*/
 
 .movable {
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-color: #24282f;
-    max-width: 30rem;
-    width: 300px;
+    /*box-shadow: 5px 5px #24282f;*/
+    width: 360px;
     padding-left: 0.5rem;
     padding-top: 0.2rem;
     position: absolute;

@@ -11,25 +11,26 @@ import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import MoveDiv from "./MoveDiv";
 
-
 class PanelHero extends Component {
+
+    static defaultProps = {
+        movable: false
+    }
 
     render() {
         const name = this.props.name;
         const dname = '.' + name;
-        console.log('PanelHero', name, dname);
         let t = this.props.game.options[dname];
-        console.log('t', t);
-        if (t === undefined) {
-            t = [0, 0];
-        }
-        const styles = {transform: `translate(${t[0]}px, ${t[1]}px)`};
+        if (t === undefined) t = [0, 0];
+        let color = "var(--bg)";
+        if (this.props.movable) color = "var(--bge)";
+        const styles = {transform: `translate(${t[0]}px, ${t[1]}px)`, background: color};
         return (
             <div>
                 <div className={"movable " + name} style={styles}>
                     {this.props.children}
                 </div>
-                <MoveDiv target={dname}/>
+                <MoveDiv target={dname} movable={this.props.movable}/>
             </div>
         );
     }
