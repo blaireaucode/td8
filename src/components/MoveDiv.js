@@ -80,6 +80,7 @@ class MoveDiv extends Component {
                         const op2 = update(options, {[this.props.target]: {$set: frame.translate}});
                         const g2 = update_g_options(this.props.game, op2);
                         this.props.set_game(g2);
+                        console.log('Final', frame.translate)
                     }
                 }}
 

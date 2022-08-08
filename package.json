@@ -6,6 +6,7 @@
     "@3d-dice/dice-box": "^1.0.5",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.6",
     "@pronestor/react-zoom-pan-pinch": "^2.3.0",
     "@reduxjs/toolkit": "^1.8.3",
