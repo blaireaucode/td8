@@ -18,21 +18,38 @@ const default_game = {
         dice_ui: {
             open: false,
             dices: []
-        }
+        },
+        ".hero": [0, 0, 0, 0],
+        ".acc": [324, 106, 0, 0],
+        ".pv": [324, 0, 0, 0],
+        ".caract": [0, 248, 0, 0],
     },
 
     hero: {
-        name: 'votre nom',
-        age: 30,
-        origin: 'quelque part',
-        location: 'Vernillane',
-        class: 'métier',
-        acc_major: '?',
-        acc_minor1: '?',
-        acc_minor2: '?',
-        pv: '10',
-        pv_max: '10',
-        survival: '?'
+        name: 'Diane',
+        age: 22,
+        origin: 'Les bois de Grandgifu',
+        location: 'Leylee',
+        class: 'Danseuse de Jade',
+        acc_major: 'La justice', // étape, notes
+        acc_minor1: 'La tempérance', // Atteindre 20 en volonté
+        acc_minor2: 'La papesse',
+        pv: 10,
+        pv_max: 10,
+        survival: '?',
+        gold: 40,
+        provisions: 8,
+        level: 1,
+        reput: 0,
+
+        robustness: 1,
+        dexterity: 1,
+        beauty: 1,
+        will_power: 1,
+        intelligence: 1,
+        erudition: 1,
+        charisma: 1
+
     },
 
     items: {},

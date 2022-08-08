@@ -97,3 +97,18 @@ Dices animation
     max-height: 500px;
     aspect-ratio: auto 1 / 1;
 }
+
+/*-----------------------------------------------------------------------------------------------------------
+Test moveable
+-----------------------------------------------------------------------------------------------------------*/
+
+.movable {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #24282f;
+    max-width: 30rem;
+    width: 300px;
+    padding-left: 0.5rem;
+    padding-top: 0.2rem;
+    position: absolute;
+}
