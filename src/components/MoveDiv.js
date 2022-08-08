@@ -9,9 +9,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import Moveable from "react-moveable";
-import {update_g_options} from "../helpers/helpers_update";
-import update from "immutability-helper";
+import Moveable from 'react-moveable';
+import {update_g_options} from '../helpers/helpers_update';
+import update from 'immutability-helper';
 
 const start = 0;
 const end = 2500;
