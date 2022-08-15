@@ -22,8 +22,8 @@ export function setupStore() {
     // read from local store (if exist), or start with default
     const saves = read_saves_in_store();
     console.log('load saves', saves);
-    //const initialState = saves[saves['current']];
-    const initialState = {};
+    const initialState = saves[saves['current']];
+    //const initialState = {};
     //console.log('load save', initialState);
 
     // list of action
