@@ -17,6 +17,10 @@ import * as up from "../helpers/helpers_update";
 
 class InputRating extends Component {
 
+    static defaultProps = {
+        max:20
+    }
+
     constructor(props) {
         super(props);
         this.state = {a: ''};
@@ -32,7 +36,7 @@ class InputRating extends Component {
                     name="hover-feedback"
                     value={value}
                     precision={1}
-                    max={20}
+                    max={this.props.max}
                     onChange={(event, newValue) => {
                         const g = up.update_g_hero(this.props.game, fn, newValue);
                         this.props.set_game(g)
