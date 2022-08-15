@@ -19,7 +19,7 @@ class PanelCaract extends Component {
             <PanelBloc name={'caract'} movable={this.props.movable}>
                 <C width={'12ch'}>La robustesse:</C>
 
-                <InputRating f={'robustness'}/>
+                {/*<InputRating f={'robustness'}/>
 
                 <C width={'12ch'}>L'adresse:</C>
                 <InputRating f={'dexterity'}/><br/>
@@ -39,7 +39,7 @@ class PanelCaract extends Component {
                 <InputRating f={'erudition'}/><br/>
 
                 <C width={'12ch'}>Le charisme</C>
-                <InputRating f={'charisma'}/><br/>
+                <InputRating f={'charisma'}/><br/>*/}
             </PanelBloc>
         );
     }
