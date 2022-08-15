@@ -53,12 +53,14 @@ class SavedGame extends Component {
         const d = new Date(save.date)
         const e = !(save.id === this.props.current);
         let ll = <span>
-            <L onClick={this.load}> ✔</L>
-            <C width={'3ch'}/>
+            <C width={'5ch'}><L onClick={this.load}>load</L></C>
             <L onClick={this.delete}> x </L>
             </span>
         if (!e) {
-            ll = <C width={'9ch'}><i>(actuelle)</i></C>
+            ll = <span>
+                <C width={'5ch'}>✔</C>
+                <L onClick={this.delete}> x </L>
+            </span>
         }
         return (
             <span>

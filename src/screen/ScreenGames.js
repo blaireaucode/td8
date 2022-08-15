@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import * as st from '../helpers/store';
 import L from '../navigation/L.js';
-import Save from '../components/SavedGame';
+import SavedGame from '../components/SavedGame';
 import {create_new_game} from "../helpers/helpers_game";
 
 class ScreenGames extends Component {
@@ -46,7 +46,7 @@ class ScreenGames extends Component {
             if (save === 'current') continue;
             let s = saves[save];
             list.push(<span key={s.id}>
-                        <Save current={saves.current} update_store={this.update_store} save={s}/>
+                        <SavedGame current={saves.current} update_store={this.update_store} save={s}/>
                         <br/>
                     </span>);
         }
