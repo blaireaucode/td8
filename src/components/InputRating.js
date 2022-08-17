@@ -11,21 +11,36 @@ import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import InputTxt from "./InputTxt";
 import C from "../helpers/C";
-//import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+// import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 // import StopIcon from '@mui/icons-material/Stop';
 import SquareIcon from '@mui/icons-material/Square';
 import {Rating} from "@mui/material";
 import * as up from "../helpers/helpers_update";
 
+class MyIcon extends Component {
+
+    render() {
+        const max = this.props.max - this.props.min;
+        const min_opacity = 0.3;
+        let op = min_opacity + (1 - min_opacity) / max * this.props.value;
+        //if (this.props.hover !== '') op = 1;
+        return (<SquareIcon sx={{fontSize: this.props.fontSize}} style={{opacity: op, color: "var(--fgl)"}}/>);
+    }
+}
+
 class InputRating extends Component {
 
     static defaultProps = {
-        max: 20
+        max: 20,
+        fontSize: 10,
+        min: 0,
+        smin: 0
     }
 
     constructor(props) {
         super(props);
         this.state = {hoverValue: ''};
+        this.i = 0;
     }
 
     render() {
@@ -36,26 +51,29 @@ class InputRating extends Component {
             <span>
                 <Rating
                     name="hover-feedback"
-                    value={value}
+                    value={value - this.props.min}
                     precision={1}
-                    max={this.props.max}
+                    max={this.props.max - this.props.min}
                     onChange={(event, newValue) => {
-                        const g = up.update_g_hero(this.props.game, fn, newValue);
-                        this.props.set_game(g)
+                        let v = newValue + this.props.min;
+                        const g = up.update_g_hero(this.props.game, fn, v);
+                        this.props.set_game(g);
+                        this.setState({hoverValue: ''});
                     }}
-                    icon={
-                        <SquareIcon sx={{fontSize: 10}} style={{opacity: 0.9, color: "var(--fgl)"}}/>
-                    }
+                    icon={<MyIcon value={value} hover={this.state.hoverValue}{...this.props}/>}
                     onChangeActive={(event, newHover) => {
-                        let a = newHover;
-                        if (a < 0 || a > 20) a = '';
+                        let a = newHover + this.props.min;
+                        if (a < this.props.min || a > this.props.max) a = '';
                         this.setState({hoverValue: a});
                     }}
+
                     emptyIcon={
-                        <SquareIcon sx={{fontSize: 10}} style={{opacity: 0.9, color: "var(--bgm)"}}/>}
+                        <SquareIcon sx={{fontSize: this.props.fontSize}} style={{opacity: 0.9, color: "var(--bgm)"}}/>}
+
                 />
                 <C width={'1ch'}/>
-                <InputTxt f={fn} width={'5ch'} type={'number'}/>
+                <InputTxt f={fn} width={'5ch'} type={'number'} min={this.props.min + this.props.smin}
+                          max={this.props.max}/>
                 <span style={{fontSize: '0.9rem', color: 'var(--fgl)'}}>{this.state.hoverValue}</span>
             </span>
         );

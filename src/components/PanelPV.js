@@ -12,21 +12,29 @@ import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import InputTxt from "./InputTxt";
 import C from "../helpers/C";
 import PanelBloc from "./PanelBloc";
+import InputRating from "./InputRating";
+import PanelLevelDice from "./PanelLevelDice";
 
 class PanelPV extends Component {
     render() {
         return (
             <PanelBloc name={'pv'} movable={this.props.movable}>
-                <C width={'12ch'}>Niveau:</C>
-                <InputTxt f={'level'} width={'5ch'} type={'number'}/><br/>
+                <C width={'10ch'}>Niveau:</C>
+                <C width={'20ch'}></C><PanelLevelDice/><br/>
+                <InputRating f={'level'} fontSize={8} max={40} smin={1}/>
+                <br/>
 
-                <C width={'12ch'}>Réputation:</C>
-                <InputTxt f={'reput'} width={'5ch'} type={'number'}/><br/>
-
-                <C width={'12ch'}>Points de vie:</C>
+                <C width={'10ch'}>Points de vie:</C>
                 <InputTxt f={'pv'} width={'5ch'} type={'number'}/>
                 <C width={'2ch'}> / </C>
                 <InputTxt f={'pv_max'} width={'5ch'} type={'number'}/> (max)
+                <br/>
+
+                <C width={'10ch'}>Réputation: </C>
+                <InputRating f={'reput'} fontSize={8} max={20} min={-20}/>
+                <br/>
+
+
             </PanelBloc>
         );
     }

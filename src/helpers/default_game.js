@@ -20,7 +20,7 @@ const default_game = {
             dices: []
         },
         ".hero": [0, 0, 0, 0],
-        ".acc": [426, 128, 0, 0],
+        ".acc": [426, 188, 0, 0],
         ".pv": [426, 0, 0, 0],
         ".caract": [0, 188, 0, 0],
     },
@@ -34,9 +34,9 @@ const default_game = {
         acc_major: 'La justice', // étape, notes
         acc_minor1: 'La tempérance', // Atteindre 20 en volonté
         acc_minor2: 'La papesse',
-        pv: 10,
-        pv_max: 10,
-        survival: '?',
+        pv: 40,
+        pv_max: 40,
+        survival: 100, // %
         gold: 40,
         provisions: 8,
         level: 1,

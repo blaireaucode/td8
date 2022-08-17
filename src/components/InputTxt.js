@@ -20,7 +20,9 @@ class InputTxt extends Component {
         read_only: false,
         align: 'left',
         mod: 0,
-        class_name: 'field_input'
+        class_name: 'field_input',
+        min:0,
+        max:10000
     }
 
     constructor(props) {
@@ -29,7 +31,12 @@ class InputTxt extends Component {
     }
 
     handleChange = ({target}) => {
-        const g = up.update_g_hero(this.props.game, this.props.f, target.value);
+        let v = target.value;
+        if (this.props.type === 'number') {
+            v = Math.min(this.props.max, v);
+            v = Math.max(this.props.min, v);
+        }
+        const g = up.update_g_hero(this.props.game, this.props.f, v);
         this.props.set_game(g)
     };
 
