@@ -11,6 +11,9 @@ import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import L from "../navigation/L";
 import DiceBox from "@3d-dice/dice-box";
+import {update_g_dice_results, update_g_options} from "../helpers/helpers_update";
+import update from "immutability-helper";
+import AllDicesResults from "../components/AllDicesResults";
 
 const diceBox = new DiceBox("#dice-box",
     {
@@ -36,7 +39,7 @@ diceBox.init().then(() => {
 })
 
 
-class RollDice extends Component {
+class ScreenDices extends Component {
 
     constructor(props) {
         super(props);
@@ -48,6 +51,8 @@ class RollDice extends Component {
 
     throw_dice() {
         console.log('dice go');
+        const g = update_g_dice_results(this.props.game, false);
+        this.props.set_game(g);
         this.setState({dice_result: false});
         diceBox.roll('5d6');
         diceBox.onRollComplete = (results) => {
@@ -60,12 +65,16 @@ class RollDice extends Component {
     get_dice_result(results) {
         console.log('get results', results);
         this.setState({dice_result: results});
+        const g = update_g_dice_results(this.props.game, results[0]);
+        this.props.set_game(g);
     }
 
     remove_dice() {
         console.log('close');
         this.setState({dice_result: false})
         diceBox.hide();
+        const g = update_g_dice_results(this.props.game, false);
+        this.props.set_game(g);
     }
 
     render() {
@@ -77,11 +86,13 @@ class RollDice extends Component {
         }
         return (
             <div>
-                <L onClick={this.throw_dice}> dice </L> /
-                <L onClick={this.remove_dice}> close </L> {r}
+                <L onClick={this.throw_dice}> roll </L> /
+                <L onClick={this.remove_dice}> remove all </L> {r}
+                <p/>
+                <AllDicesResults/>
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RollDice)
+export default connect(mapStateToProps, mapDispatchToProps)(ScreenDices)

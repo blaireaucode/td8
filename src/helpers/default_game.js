@@ -19,6 +19,10 @@ const default_game = {
             open: false,
             dices: []
         },
+        next_roll: {
+            nb_dices: 5,
+        },
+        dice_result: false,
         ".hero": [0, 0, 0, 0],
         ".acc": [426, 188, 0, 0],
         ".pv": [426, 0, 0, 0],

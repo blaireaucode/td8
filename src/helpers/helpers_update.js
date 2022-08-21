@@ -26,3 +26,8 @@ export function update_g_options(game, options) {
         {options: {$set: options}});
 }
 
+export function update_g_dice_results(game, res) {
+    const options = update(game.options, {dice_results: {$set: res}});
+    return update_g_options(game, options);
+}
+

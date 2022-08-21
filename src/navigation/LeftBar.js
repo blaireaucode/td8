@@ -19,7 +19,7 @@ class LeftBar extends Component {
                 <L to={'/hero'}>Personnage</L><p/>
                 <L to={'/games'}>Sauvegarde</L><p/>
                 <L to={'/about'}>A propos</L><p/>
-                <L to={'/debug'}>Debug</L><p/>
+                <L to={'/dices'}>🎲</L><p/>
             </div>
         );
     }
