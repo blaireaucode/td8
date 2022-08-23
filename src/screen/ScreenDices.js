@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import L from "../navigation/L";
 import DiceBox from "@3d-dice/dice-box";
-import {update_g_dice_results, update_g_options} from "../helpers/helpers_update";
+import {update_g_dice_results, update_g_dice_to_reroll, update_g_options} from "../helpers/helpers_update";
 import update from "immutability-helper";
 import AllDicesResults from "../components/AllDicesResults";
 
@@ -44,16 +44,15 @@ class ScreenDices extends Component {
     constructor(props) {
         super(props);
         this.throw_dice = this.throw_dice.bind(this);
+        this.reroll = this.reroll.bind(this);
         this.get_dice_result = this.get_dice_result.bind(this);
         this.remove_dice = this.remove_dice.bind(this);
-        this.state = {dice_result: false};
     }
 
     throw_dice() {
         console.log('dice go');
         const g = update_g_dice_results(this.props.game, false);
         this.props.set_game(g);
-        this.setState({dice_result: false});
         diceBox.roll('5d6');
         diceBox.onRollComplete = (results) => {
             console.log('onRollComplete');
@@ -62,31 +61,71 @@ class ScreenDices extends Component {
         diceBox.show();
     }
 
-    get_dice_result(results) {
-        console.log('get results', results);
-        this.setState({dice_result: results});
-        const g = update_g_dice_results(this.props.game, results[0]);
+    get_dice_result(dice_results) {
+        const new_res = dice_results[0];
+        console.log('new_res', new_res);
+        let current_res = JSON.parse(JSON.stringify(this.props.game.options.dice_results));
+        console.log('current_res', current_res);
+        console.log('to reroll', this.props.game.options.dice_to_reroll);
+        if (current_res !== false) {
+            let i = 0;
+            let j = 0;
+            for (let d of this.props.game.options.dice_to_reroll) {
+                if (j >= new_res.rolls.length) continue;
+                console.log('loop ', i, d, current_res.rolls[i].value, new_res.rolls[j].value);
+                if (d === false) {
+                    current_res.rolls[i].value = new_res.rolls[j].value;
+                    j += 1;
+                }
+                i += 1;
+            }
+        } else {
+            current_res = new_res;
+
+        }
+        console.log('results, ', current_res);
+        let g = update_g_dice_results(this.props.game, current_res);
+        let r = [];
+        for (let i = 0; i < current_res.qty; i++) {
+            r[i] = true;
+        }
+        g = update_g_dice_to_reroll(g, r)
+        console.log('g option', g.options)
         this.props.set_game(g);
+    }
+
+    reroll() {
+        console.log('reroll');
+        let n = 0;
+        for (let d of this.props.game.options.dice_to_reroll) {
+            console.log('d', d);
+            if (d === false) n += 1;
+        }
+        n = n.toString() + 'd6';
+        console.log('n', n)
+        //diceBox.reroll({groupId: 1, rollId: 0},            {remove: false, hide: false, newStartPoint: false});
+        diceBox.roll(n);
+        /*diceBox.onRollComplete = (results) => {
+            console.log('onreRollComplete');
+            this.get_dice_result(results);
+        }
+        diceBox.show();*/
     }
 
     remove_dice() {
         console.log('close');
-        this.setState({dice_result: false})
+        //this.setState({dice_result: false})
         diceBox.hide();
         const g = update_g_dice_results(this.props.game, false);
         this.props.set_game(g);
     }
 
     render() {
-        console.log('state', this.state, diceBox);
         let r = '';
-        if (this.state.dice_result) {
-            r = this.state.dice_result[0].rolls[0].value; // total
-            console.log('dice value', r);
-        }
         return (
             <div>
                 <L onClick={this.throw_dice}> roll </L> /
+                <L onClick={this.reroll}> reroll </L> /
                 <L onClick={this.remove_dice}> remove all </L> {r}
                 <p/>
                 <AllDicesResults/>

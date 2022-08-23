@@ -31,3 +31,8 @@ export function update_g_dice_results(game, res) {
     return update_g_options(game, options);
 }
 
+export function update_g_dice_to_reroll(game, res) {
+    const options = update(game.options, {dice_to_reroll: {$set: res}});
+    return update_g_options(game, options);
+}
+

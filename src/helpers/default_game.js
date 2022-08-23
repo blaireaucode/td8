@@ -22,7 +22,8 @@ const default_game = {
         next_roll: {
             nb_dices: 5,
         },
-        dice_result: false,
+        dice_to_reroll: [],
+        dice_results: false,
         ".hero": [0, 0, 0, 0],
         ".acc": [426, 188, 0, 0],
         ".pv": [426, 0, 0, 0],

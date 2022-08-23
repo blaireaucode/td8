@@ -13,6 +13,8 @@ import InputTxt from "./InputTxt";
 import C from "../helpers/C";
 import PanelBloc from "./PanelBloc";
 import {Checkbox, FormControlLabel} from "@mui/material";
+import update from "immutability-helper";
+import {update_g_dice_to_reroll} from "../helpers/helpers_update";
 
 class OneDiceResult extends Component {
 
@@ -22,17 +24,26 @@ class OneDiceResult extends Component {
     }
 
     onChange(event) {
-        console.log('eve', event)
+        //console.log('eve', event);
+        const c = event.target.checked;
+        const next_roll = update(this.props.game.options.dice_to_reroll, {[this.props.dice.rollId]: {$set: c}});
+        //console.log('nr', next_roll);
+        const g = update_g_dice_to_reroll(this.props.game, next_roll);
+        this.props.set_game(g);
     }
 
     render() {
         const dice = this.props.dice;
-        console.log('dice', dice);
-
+        const c = this.props.game.options.dice_to_reroll[this.props.dice.rollId];
+        //console.log('dice', dice, c);
         return (
             <span>
                 <FormControlLabel
-                    control={<Checkbox onChange={this.onChange} label={dice.value}/>} label={dice.value}/>
+                    control={<Checkbox onChange={this.onChange}
+                                       checked={c}
+                                       checkedIcon={<span className={'dice-txt1'}>(à garder)</span>}
+                                       icon={<span className={'dice-txt2'}>à relancer</span>}
+                                       label={dice.value}/>} label={dice.value}/>
                 <C width={'3ch'}/>
             </span>
         );

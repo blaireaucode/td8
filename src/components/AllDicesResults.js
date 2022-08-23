@@ -17,17 +17,19 @@ import OneDiceResult from "./OneDiceResult";
 class AllDicesResults extends Component {
     render() {
         const dr = this.props.game.options.dice_results;
+        //console.log('dr', dr);
         if (dr === false) return '';
         const rolls = dr.rolls;
-        console.log('res', rolls);
+        //console.log('res', rolls);
         const d = [];
         for (let r of rolls) {
-            console.log('r', r);
-            d.push(<OneDiceResult dice={r}/>)
+            //console.log('r', r);
+            d.push(<OneDiceResult dice={r} key={r.rollId}/>)
         }
 
         return (
             <span>
+                <C width={'1ch'}/>
                 {d}
             </span>
         );
