@@ -20,11 +20,13 @@ class AllDicesResults extends Component {
         //console.log('dr', dr);
         if (dr === false) return '';
         const rolls = dr.rolls;
-        //console.log('res', rolls);
+        console.log('res', rolls);
         const d = [];
+        let i=0;
         for (let r of rolls) {
             //console.log('r', r);
-            d.push(<OneDiceResult dice={r} key={r.rollId}/>)
+            d.push(<OneDiceResult dice={r} i={i} key={i}/>)
+            i+=1;
         }
 
         return (

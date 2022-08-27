@@ -47,6 +47,11 @@ class ScreenDices extends Component {
         this.reroll = this.reroll.bind(this);
         this.get_dice_result = this.get_dice_result.bind(this);
         this.remove_dice = this.remove_dice.bind(this);
+        this.erase_dice = this.erase_dice.bind(this);
+        diceBox.onRollComplete = (results) => {
+            console.log('onRollComplete');
+            this.get_dice_result(results);
+        }
     }
 
     throw_dice() {
@@ -54,19 +59,31 @@ class ScreenDices extends Component {
         const g = update_g_dice_results(this.props.game, false);
         this.props.set_game(g);
         diceBox.roll('5d6');
-        diceBox.onRollComplete = (results) => {
-            console.log('onRollComplete');
-            this.get_dice_result(results);
-        }
         diceBox.show();
     }
 
     get_dice_result(dice_results) {
         const new_res = dice_results[0];
         console.log('new_res', new_res);
+
+        // merge with current
         let current_res = JSON.parse(JSON.stringify(this.props.game.options.dice_results));
         console.log('current_res', current_res);
-        console.log('to reroll', this.props.game.options.dice_to_reroll);
+
+        if (current_res !== false) {
+            let i = 0;
+            for (let roll of current_res.rolls) {
+                if (roll.to_reroll === true) {
+                    roll.value = new_res.rolls[i].value;
+                    i += 1;
+                }
+            }
+        } else {
+            current_res = new_res;
+            for (let roll of current_res.rolls) roll['to_reroll'] = false;
+        }
+
+        /*console.log('to reroll', this.props.game.options.dice_to_reroll);
         if (current_res !== false) {
             let i = 0;
             let j = 0;
@@ -83,8 +100,11 @@ class ScreenDices extends Component {
             current_res = new_res;
 
         }
+        */
         console.log('results, ', current_res);
         let g = update_g_dice_results(this.props.game, current_res);
+
+        // reroll ?
         let r = [];
         for (let i = 0; i < current_res.qty; i++) {
             r[i] = true;
@@ -96,37 +116,33 @@ class ScreenDices extends Component {
 
     reroll() {
         console.log('reroll');
+        const res = this.props.game.options.dice_results.rolls;
         let n = 0;
-        for (let d of this.props.game.options.dice_to_reroll) {
-            console.log('d', d);
-            if (d === false) n += 1;
+        for (let d of res) {
+            if (d.to_reroll === true) n += 1;
         }
         n = n.toString() + 'd6';
-        console.log('n', n)
-        //diceBox.reroll({groupId: 1, rollId: 0},            {remove: false, hide: false, newStartPoint: false});
         diceBox.roll(n);
-        /*diceBox.onRollComplete = (results) => {
-            console.log('onreRollComplete');
-            this.get_dice_result(results);
-        }
-        diceBox.show();*/
+        diceBox.show();
     }
 
     remove_dice() {
-        console.log('close');
-        //this.setState({dice_result: false})
         diceBox.hide();
         const g = update_g_dice_results(this.props.game, false);
         this.props.set_game(g);
     }
 
+    erase_dice() {
+        diceBox.hide();
+    }
+
     render() {
-        let r = '';
         return (
             <div>
                 <L onClick={this.throw_dice}> roll </L> /
                 <L onClick={this.reroll}> reroll </L> /
-                <L onClick={this.remove_dice}> remove all </L> {r}
+                <L onClick={this.erase_dice}> erase </L> /
+                <L onClick={this.remove_dice}> remove all </L>
                 <p/>
                 <AllDicesResults/>
             </div>

@@ -99,14 +99,29 @@ Dices animation
     aspect-ratio: auto 1 / 1;
 }
 
+.dice-left {
+    vertical-align: bottom;
+}
+
+.dice-right {
+    vertical-align: bottom;
+    margin-left: -1ch;
+}
+
 .dice-txt1 {
-    font-size: 0.7rem;
+    /*font-size: 0.7rem;*/
+    margin-top:0ch
 }
 
 .dice-txt2 {
     font-size: 0.7rem;
     color:var(--fgl);
 }
+
+.dice-label {
+    font-size: 1.4rem;
+}
+
 /*-----------------------------------------------------------------------------------------------------------
 Test movable
 -----------------------------------------------------------------------------------------------------------*/

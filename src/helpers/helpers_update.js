@@ -31,8 +31,23 @@ export function update_g_dice_results(game, res) {
     return update_g_options(game, options);
 }
 
+export function update_g_dice_results_rolls(game, res) {
+    const options = update(game.options, {dice_results: {rolls: {$set: res}}});
+    return update_g_options(game, options);
+}
+
 export function update_g_dice_to_reroll(game, res) {
     const options = update(game.options, {dice_to_reroll: {$set: res}});
     return update_g_options(game, options);
 }
 
+export function immutablySwapItems(items, firstIndex, secondIndex) {
+    // https://stackoverflow.com/questions/41127548/how-do-i-swap-array-elements-in-an-immutable-fashion-within-a-redux-reducer
+    // Constant reference - we can still modify the array itself
+    const results = items.slice();
+    const firstItem = items[firstIndex];
+    results[firstIndex] = items[secondIndex];
+    results[secondIndex] = firstItem;
+
+    return results;
+}
