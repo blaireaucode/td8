@@ -9,26 +9,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import InputTxt from "./InputTxt";
 import C from "../helpers/C";
-import PanelBloc from "./PanelBloc";
 import OneDiceResult from "./OneDiceResult";
 
 class AllDicesResults extends Component {
     render() {
         const dr = this.props.game.options.dice_results;
-        //console.log('dr', dr);
         if (dr === false) return '';
         const rolls = dr.rolls;
-        console.log('res', rolls);
         const d = [];
-        let i=0;
+        let i = 0;
         for (let r of rolls) {
-            //console.log('r', r);
             d.push(<OneDiceResult dice={r} i={i} key={i}/>)
-            i+=1;
+            i += 1;
         }
-
         return (
             <span>
                 <C width={'1ch'}/>

@@ -22,7 +22,7 @@ class MyIcon extends Component {
     render() {
         const max = this.props.max - this.props.min;
         const min_opacity = 0.3;
-        let op = min_opacity + (1 - min_opacity) / max * this.props.value;
+        let op = min_opacity + (1 - min_opacity) / max * (this.props.value-this.props.min);
         //if (this.props.hover !== '') op = 1;
         return (<SquareIcon sx={{fontSize: this.props.fontSize}} style={{opacity: op, color: "var(--fgl)"}}/>);
     }

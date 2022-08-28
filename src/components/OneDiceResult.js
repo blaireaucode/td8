@@ -9,19 +9,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import InputTxt from "./InputTxt";
 import C from "../helpers/C";
-import PanelBloc from "./PanelBloc";
-import {Checkbox, FormControlLabel} from "@mui/material";
 import update from "immutability-helper";
 import {
+    dice_to_reroll_flag,
     immutablySwapItems,
     update_g_dice_results,
-    update_g_dice_results_rolls,
-    update_g_dice_to_reroll
+    update_g_dice_results_rolls, update_g_swap_dice, update_g_swap_dice_left, update_g_swap_dice_right
 } from "../helpers/helpers_update";
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import L from "../navigation/L";
 
 class OneDiceResult extends Component {
@@ -34,71 +29,31 @@ class OneDiceResult extends Component {
     }
 
     onLeft() {
-        const i = this.props.i;
-        const j = i === 0 ? this.props.game.options.dice_results.qty - 1 : i - 1;
-        const rolls = immutablySwapItems(this.props.game.options.dice_results.rolls, i, j);
-        const dr = update(this.props.game.options.dice_results, {rolls: {$set: rolls}});
-        let g = update_g_dice_results(this.props.game, dr);
-
-        //const to_reroll = immutablySwapItems(this.props.game.options.dice_to_reroll, i, j);
-        //g = update_g_dice_to_reroll(g, to_reroll);
-
+        const g = update_g_swap_dice_left(this.props.game, this.props.i);
         this.props.set_game(g);
     }
 
     onRight() {
-        const i = this.props.i;
-        const j = i === this.props.game.options.dice_results.qty - 1 ? 0 : i + 1;
-
-        const rolls = immutablySwapItems(this.props.game.options.dice_results.rolls, i, j);
-        const dr = update(this.props.game.options.dice_results, {rolls: {$set: rolls}});
-        let g = update_g_dice_results(this.props.game, dr);
-
-        //const to_reroll = immutablySwapItems(this.props.game.options.dice_to_reroll, i, j);
-        //g = update_g_dice_to_reroll(g, to_reroll);
-
+        const g = update_g_swap_dice_right(this.props.game, this.props.i);
         this.props.set_game(g);
     }
 
-    onChange(event) {
-        //console.log('eve', event);
-        //const c = event.target.checked;
-        const c = !this.props.game.options.dice_results.rolls[this.props.i].to_reroll;
-        /*
-        const next_roll = update(this.props.game.options.dice_to_reroll, {[this.props.dice.rollId]: {$set: c}});
-        //console.log('nr', next_roll);
-        const g = update_g_dice_to_reroll(this.props.game, next_roll);
-
-         */
-
+    onChange() {
+        const c = !dice_to_reroll_flag(this.props.game, this.props.i);
         const rolls = update(this.props.game.options.dice_results.rolls,
             {[this.props.i]: {to_reroll: {$set: c}}});
-        //{[this.props.dice.rollId]: {to_reroll: {$set: c}}});
-        console.log('rolls', rolls);
         const g = update_g_dice_results_rolls(this.props.game, rolls);
-
         this.props.set_game(g);
     }
 
     render() {
         const dice = this.props.dice;
-        //const c = this.props.game.options.dice_to_reroll[this.props.dice.rollId];
-        //const c = this.props.game.options.dice_results.rolls[this.props.dice.rollId].to_reroll;
-        const c = this.props.game.options.dice_results.rolls[this.props.i].to_reroll;
-        console.log('c', c, this.props.i, this.props.dice.rollId);
-        //console.log('dice', dice, c);
+        const c = dice_to_reroll_flag(this.props.game, this.props.i);
         const l = <span className={'dice-label'}>{dice.value}</span>
         const ci = c ? <span className={'dice-reroll'}>🎲 </span> : '';
         return (
             <span>
                 <span className={'dice-left'}><L onClick={this.onLeft}> ⬅ </L></span>
-                {/*<FormControlLabel
-                    control={<Checkbox onChange={this.onChange}
-                                       checked={c}
-                                       checkedIcon={<span className={'dice-reroll'}>🎲</span>}
-                                       icon={<span></span>}
-                                       label={dice.value}/>}
-                    label={l}/>*/}
                 <L onClick={this.onChange}>
                 <C width={'2ch'}/>
                     {ci}
@@ -106,7 +61,7 @@ class OneDiceResult extends Component {
                     <C width={'2ch'}/>
                 </L>
                 <span className={'dice-right'}><L onClick={this.onRight}> ⮕ </L></span>
-                <C width={'3ch'}/>
+                <C width={'4ch'}/>
             </span>
         );
     }

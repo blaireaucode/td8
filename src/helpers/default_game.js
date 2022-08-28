@@ -19,10 +19,7 @@ const default_game = {
             open: false,
             dices: []
         },
-        next_roll: {
-            nb_dices: 5,
-        },
-        dice_to_reroll: [],// FIXME to remove
+        dice_nb:5,
         dice_results: false,
 
         // position of the blocks
