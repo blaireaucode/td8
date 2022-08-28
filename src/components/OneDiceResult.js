@@ -12,12 +12,19 @@ import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import C from "../helpers/C";
 import update from "immutability-helper";
 import {
-    dice_to_reroll_flag,
-    immutablySwapItems,
-    update_g_dice_results,
-    update_g_dice_results_rolls, update_g_swap_dice, update_g_swap_dice_left, update_g_swap_dice_right
+    dice_to_reroll_flag, update_g_dice_results_rolls,
+    update_g_swap_dice_left, update_g_swap_dice_right
 } from "../helpers/helpers_update";
 import L from "../navigation/L";
+
+const dices = {
+    1: '⚀',
+    2: '⚁',
+    3: '⚂',
+    4: '⚃',
+    5: '⚄',
+    6: '⚅',
+}
 
 class OneDiceResult extends Component {
 
@@ -49,6 +56,7 @@ class OneDiceResult extends Component {
     render() {
         const dice = this.props.dice;
         const c = dice_to_reroll_flag(this.props.game, this.props.i);
+        //const l = <span className={'dice-label'}>{dices[dice.value]}</span>
         const l = <span className={'dice-label'}>{dice.value}</span>
         const ci = c ? <span className={'dice-reroll'}>🎲 </span> : '';
         return (

@@ -29,7 +29,7 @@ class L extends Component {
                       onClick={this.handleClick.bind(this)}>{this.props.children}</Link>
             );
         else
-            return (<span>
+            return (<span className={'disabled-linked'}>
                       {this.props.children}
                     </span>
             );

@@ -13,6 +13,10 @@ import L from "../navigation/L";
 import DiceBox from "@3d-dice/dice-box";
 import {merge_dice_results, update_g_dice_results} from "../helpers/helpers_update";
 import AllDicesResults from "../components/AllDicesResults";
+import HelpCollapsible from "../components/HelpCollapsible";
+import C from "../helpers/C";
+import DeleteIcon from '@mui/icons-material/Delete';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const diceBox = new DiceBox("#dice-box",
     {
@@ -49,6 +53,7 @@ class ScreenDices extends Component {
         diceBox.onRollComplete = (results) => {
             this.get_dice_result(results);
         }
+        this.state = {help: true};
     }
 
     throw_dice() {
@@ -84,17 +89,56 @@ class ScreenDices extends Component {
 
     erase_dice() {
         diceBox.hide();
+        this.setState({}); // to trigger the 'x'
     }
 
     render() {
+        let reroll = '';
+        let e = false;
+        let n = 0;
+        let trash = '';
+        let erase = '';
+        if (diceBox.canvas.style.display === "block") erase = '✗';
+        if (this.props.game.options.dice_results.rolls) {
+            for (let r of this.props.game.options.dice_results.rolls) {
+                if (r.to_reroll) n += 1;
+            }
+            if (n === 1) {
+                reroll = 'Relancer un dé';
+                e = true;
+            }
+            if (n > 1) {
+                reroll = 'Relancer ' + n + ' dés';
+                e = true;
+            }
+            trash =
+                <span className={'dice-trash'}><L onClick={this.remove_dice}><DeleteIcon fontSize={'small'}/></L></span>
+        }
         return (
             <div>
-                <L onClick={this.throw_dice}> roll </L> /
-                <L onClick={this.reroll}> reroll </L> /
-                <L onClick={this.erase_dice}> erase </L> /
-                <L onClick={this.remove_dice}> remove all </L>
+                <C width={'25ch'}>
+                    <L onClick={this.throw_dice}>Lancer tous les dés</L>
+                    <C width={'1ch'}/>
+                    <L onClick={this.erase_dice}>{erase}</L>
+                </C>
+
+                <L onClick={this.reroll} enabled={e}>{reroll}</L> <p/>
                 <p/>
+
                 <AllDicesResults/>
+
+                {trash}
+
+                <p/>
+                <p/>
+                <HelpCollapsible>
+                    <span>
+                        Une fois les dés lancés, sélectionnez les dés à relancer. <p/>
+                        Les flèches servent à déplacer les dés pour mieux repérer des configurations.<p/>
+                    </span>
+                </HelpCollapsible>
+                <p/>
+
             </div>
         );
     }

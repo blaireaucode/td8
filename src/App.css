@@ -34,6 +34,10 @@ a:visited {
     color: var(--fgl);
 }
 
+.disabled-linked {
+    color:var(--fgh);
+}
+
 .App {
     margin-left: 8rem;
     text-align: left;
@@ -128,15 +132,21 @@ Dices animation
 }
 
 .dice-label:hover {
-    text-emphasis-style: dot;
-    text-emphasis-position: under; /* or `under right` */
+    /*text-emphasis-style: dot;
+    text-emphasis-position: under;
+    */
+    color: var(--fge)
 }
 
 .dice-result {
 }
 
+.dice-trash {
+    vertical-align: bottom;
+}
+
 /*-----------------------------------------------------------------------------------------------------------
-Test movable
+movable
 -----------------------------------------------------------------------------------------------------------*/
 
 .movable {
@@ -148,4 +158,49 @@ Test movable
     padding-left: 0.5rem;
     padding-top: 0.2rem;
     position: absolute;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+help collapse
+-----------------------------------------------------------------------------------------------------------*/
+
+.ReactCollapse--collapse {
+    transition: height 500ms;
+    transition: height 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.help {
+    font-size: calc(0.85em);
+    /*color: #aaa;*/
+    color: #807c62;
+    font-weight: normal;
+}
+
+.help-right {
+    float: right;
+}
+
+/* -------------------------------------------------------------------- */
+/* CK EDITOR */
+/* -------------------------------------------------------------------- */
+
+.ck {
+    border: 0 !important;
+}
+
+.ck-content {
+    background-color: var(--bg) !important;
+}
+
+.ck-toolbar {
+    background-color: var(--bg) !important;
+    color: var(--fg) !important;
+}
+
+.ck-icon {
+    color: var(--fgh) !important;
+}
+
+.ck-button {
+    color: var(--fgh) !important;
 }

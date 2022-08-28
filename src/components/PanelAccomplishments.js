@@ -17,11 +17,12 @@ class PanelAccomplishments extends Component {
     render() {
         return (
             <PanelBloc name={'acc'} movable={this.props.movable}>
-                Accomplissements<br/>
-                <C width={'1ch'}/><C width={'7ch'}>Majeur:</C> <InputTxt f={'acc_major'} width={'24ch'}/> <br/>
-                <C width={'1ch'}/><C width={'7ch'}>Mineur 1:</C> <InputTxt f={'acc_minor1'} width={'24ch'}/>
+                Accomplissements
+                <p/>
+                <C width={'1ch'}/><C width={'7ch'}>Majeur:</C> <InputTxt f={'acc_major'} width={'35ch'}/> <br/>
+                <C width={'1ch'}/><C width={'7ch'}>Mineur 1:</C> <InputTxt f={'acc_minor1'} width={'35ch'}/>
                 <br/>
-                <C width={'1ch'}/><C width={'7ch'}>Mineur 2:</C> <InputTxt f={'acc_minor2'} width={'24ch'}/>
+                <C width={'1ch'}/><C width={'7ch'}>Mineur 2:</C> <InputTxt f={'acc_minor2'} width={'35ch'}/>
                 <br/>
             </PanelBloc>
         );

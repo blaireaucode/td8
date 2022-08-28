@@ -11,11 +11,13 @@ import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import InputTxt from "./InputTxt";
 import C from "../helpers/C";
-// import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-// import StopIcon from '@mui/icons-material/Stop';
 import SquareIcon from '@mui/icons-material/Square';
+import CircleIcon from '@mui/icons-material/Circle';
 import {Rating} from "@mui/material";
 import * as up from "../helpers/helpers_update";
+
+const Icon = SquareIcon;
+//const Icon = CircleIcon;
 
 class MyIcon extends Component {
 
@@ -24,7 +26,7 @@ class MyIcon extends Component {
         const min_opacity = 0.3;
         let op = min_opacity + (1 - min_opacity) / max * (this.props.value-this.props.min);
         //if (this.props.hover !== '') op = 1;
-        return (<SquareIcon sx={{fontSize: this.props.fontSize}} style={{opacity: op, color: "var(--fgl)"}}/>);
+        return (<Icon sx={{fontSize: this.props.fontSize}} style={{opacity: op, color: "var(--fgl)"}}/>);
     }
 }
 
@@ -68,7 +70,7 @@ class InputRating extends Component {
                     }}
 
                     emptyIcon={
-                        <SquareIcon sx={{fontSize: this.props.fontSize}} style={{opacity: 0.9, color: "var(--bgm)"}}/>}
+                        <Icon sx={{fontSize: this.props.fontSize}} style={{opacity: 0.9, color: "var(--bgm)"}}/>}
 
                 />
                 <C width={'1ch'}/>
