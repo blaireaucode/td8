@@ -100,26 +100,39 @@ Dices animation
 }
 
 .dice-left {
-    vertical-align: bottom;
+}
+
+.dice-left:hover {
+    background-color: var(--bgm);
 }
 
 .dice-right {
-    vertical-align: bottom;
-    margin-left: -1ch;
 }
 
-.dice-txt1 {
-    /*font-size: 0.7rem;*/
-    margin-top:0ch
+.dice-right:hover {
+    background-color: var(--bgm);
 }
 
-.dice-txt2 {
-    font-size: 0.7rem;
-    color:var(--fgl);
+.dice-reroll {
+    font-size: 0.9rem;
+    color: var(--fgl);
+    margin-right: 1rem;
+    margin-left: -1rem;
 }
 
 .dice-label {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    color: var(--fg);
+}
+
+.dice-label:hover {
+    text-emphasis-style: dot;
+    text-emphasis-position: under; /* or `under right` */
+}
+
+.dice-result {
 }
 
 /*-----------------------------------------------------------------------------------------------------------

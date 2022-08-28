@@ -62,7 +62,8 @@ class OneDiceResult extends Component {
 
     onChange(event) {
         //console.log('eve', event);
-        const c = event.target.checked;
+        //const c = event.target.checked;
+        const c = !this.props.game.options.dice_results.rolls[this.props.i].to_reroll;
         /*
         const next_roll = update(this.props.game.options.dice_to_reroll, {[this.props.dice.rollId]: {$set: c}});
         //console.log('nr', next_roll);
@@ -72,7 +73,7 @@ class OneDiceResult extends Component {
 
         const rolls = update(this.props.game.options.dice_results.rolls,
             {[this.props.i]: {to_reroll: {$set: c}}});
-            //{[this.props.dice.rollId]: {to_reroll: {$set: c}}});
+        //{[this.props.dice.rollId]: {to_reroll: {$set: c}}});
         console.log('rolls', rolls);
         const g = update_g_dice_results_rolls(this.props.game, rolls);
 
@@ -87,18 +88,25 @@ class OneDiceResult extends Component {
         console.log('c', c, this.props.i, this.props.dice.rollId);
         //console.log('dice', dice, c);
         const l = <span className={'dice-label'}>{dice.value}</span>
+        const ci = c ? <span className={'dice-reroll'}>🎲 </span> : '';
         return (
             <span>
-                <span className={'dice-left'}><L onClick={this.onLeft}> <ArrowLeftIcon/></L></span>
-                <FormControlLabel
+                <span className={'dice-left'}><L onClick={this.onLeft}> ⬅ </L></span>
+                {/*<FormControlLabel
                     control={<Checkbox onChange={this.onChange}
                                        checked={c}
-                                       checkedIcon={<span className={'dice-txt2'}>relancer</span>}
-                                       icon={<span className={'dice-txt1'}></span>}
+                                       checkedIcon={<span className={'dice-reroll'}>🎲</span>}
+                                       icon={<span></span>}
                                        label={dice.value}/>}
-                    label={l}/>
-                <span className={'dice-right'}><L onClick={this.onRight}><ArrowRightIcon/> </L></span>
-                <C width={'4ch'}/>
+                    label={l}/>*/}
+                <L onClick={this.onChange}>
+                <C width={'2ch'}/>
+                    {ci}
+                    {l}
+                    <C width={'2ch'}/>
+                </L>
+                <span className={'dice-right'}><L onClick={this.onRight}> ⮕ </L></span>
+                <C width={'3ch'}/>
             </span>
         );
     }
