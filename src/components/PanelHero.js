@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import InputTxt from "./InputTxt";
+import InputHero from "./InputHero";
 import C from "../helpers/C";
 import PanelBloc from "./PanelBloc";
 
@@ -17,15 +17,15 @@ class PanelHero extends Component {
     render() {
         return (
             <PanelBloc name={'hero'} movable={this.props.movable}>
-                <InputTxt f={'name'} width={'30ch'}/> <br/>
+                <InputHero f={'name'} width={'30ch'}/> <br/>
 
-                <C width={'11ch'}>Age:</C> <InputTxt f={'age'} width={'20ch'}/> <br/>
+                <C width={'11ch'}>Age:</C> <InputHero f={'age'} width={'20ch'}/> <br/>
 
-                <C width={'11ch'}>Origine:</C> <InputTxt f={'origin'} width={'20ch'}/> <br/>
+                <C width={'11ch'}>Origine:</C> <InputHero f={'origin'} width={'20ch'}/> <br/>
 
-                <C width={'11ch'}>Lieu de départ:</C> <InputTxt f={'location'} width={'20ch'}/> <br/>
+                <C width={'11ch'}>Lieu de départ:</C> <InputHero f={'location'} width={'20ch'}/> <br/>
 
-                <C width={'11ch'}>Classe:</C> <InputTxt f={'class'} width={'20ch'}/>
+                <C width={'11ch'}>Classe:</C> <InputHero f={'class'} width={'20ch'}/>
             </PanelBloc>
         );
     }

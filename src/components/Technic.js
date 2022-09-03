@@ -10,40 +10,37 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import C from "../helpers/C";
-import PanelBloc from "./PanelBloc";
-import InputRating from "./InputRating";
+import InputTechnic from "./InputTechnic";
 import L from "../navigation/L";
 import update from "immutability-helper";
-import {default_technic} from "../helpers/default_game";
-import {v4 as uuidv4} from "uuid";
-import InputTxt from "./InputTxt";
-import InputTechnic from "./InputTechnic";
-import InputHero from "./InputHero";
 
 class Technic extends Component {
 
     constructor(props) {
         super(props);
-        this.addTechnic = this.addTechnic.bind(this);
+        this.remove = this.remove.bind(this);
     }
 
-    addTechnic() {
-
+    remove() {
+        const idx = this.props.idx;
+        const g = update(this.props.game, {
+            hero: {
+                technics: {
+                    $splice: [[idx,1]]}}});
+        this.props.set_game(g)
     }
 
     render() {
         const idx = this.props.idx;
-        const t = this.props.game.hero.technics[idx];
-        console.log('t', idx, t);
         return (
             <span>
                 <InputTechnic f={'name'} width={'20ch'} idx={idx}/>
-
-                <C width={'4ch'}> {t.dice}</C>
-                <C width={'10ch'}> {t.combination}</C>
-                <C width={'4ch'}> {t.damage}</C>
-                <C width={'10ch'}> {t.effect}</C>
-
+                <InputTechnic f={'dice'} width={'4ch'} idx={idx} type={'number'}/>
+                <C width={'2ch'}/>
+                <InputTechnic f={'combination'} width={'20ch'} idx={idx}/>
+                <InputTechnic f={'damage'} width={'4ch'} idx={idx}/>
+                <InputTechnic f={'effect'} width={'20ch'} idx={idx}/>
+                <L onClick={this.remove}>✗</L>
             </span>
         );
     }

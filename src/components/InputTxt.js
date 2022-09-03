@@ -26,32 +26,11 @@ class InputTxt extends Component {
         max: 10000,
     }
 
-    constructor(props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange = ({target}) => {
-        let v = target.value;
-        if (this.props.type === 'number') {
-            v = Math.min(this.props.max, v);
-            v = Math.max(this.props.min, v);
-        }
-        const g = up.update_g_hero(this.props.game, this.props.f, v);
-        this.props.set_game(g)
-    };
-
     render() {
-        let c = this.props.game.hero;
-        const fn = this.props.f;
-        let value = c[fn];
-        return this.render_input(fn, value);
-    }
-
-    render_input(fn, value) {
-        // class name (for style)
-        let align = this.props.align;
-        let cn = this.props.class_name;
+        const align = this.props.align;
+        const cn = this.props.class_name;
+        const fn = this.props.fn;
+        const value = this.props.value;
         return (
             <Input className={cn}
                    disableUnderline={true}
@@ -61,7 +40,7 @@ class InputTxt extends Component {
                    style={{width: this.props.width}}
                    inputProps={{style: {textAlign: align}}}
                    readOnly={this.props.read_only}
-                   onChange={this.handleChange}
+                   onChange={this.props.onChange}
             />
         );
     }

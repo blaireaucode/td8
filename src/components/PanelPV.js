@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import InputTxt from "./InputTxt";
+import InputHero from "./InputHero";
 import C from "../helpers/C";
 import PanelBloc from "./PanelBloc";
 import InputRating from "./InputRating";
@@ -25,9 +25,9 @@ class PanelPV extends Component {
                 <br/>
 
                 <C width={'10ch'}>Points de vie:</C>
-                <InputTxt f={'pv'} width={'5ch'} type={'number'}/>
+                <InputHero f={'pv'} width={'5ch'} type={'number'}/>
                 <C width={'2ch'}> / </C>
-                <InputTxt f={'pv_max'} width={'5ch'} type={'number'}/> (max)
+                <InputHero f={'pv_max'} width={'5ch'} type={'number'}/> (max)
                 <br/>
 
                 <C width={'10ch'}>Réputation: </C>

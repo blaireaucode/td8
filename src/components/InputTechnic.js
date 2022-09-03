@@ -8,50 +8,41 @@
 
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Input from '@mui/material/Input';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import * as up from '../helpers/helpers_update';
 import update from "immutability-helper";
 import InputTxt from "./InputTxt";
-import InputTxt2 from "./InputTxt2";
 
 class InputTechnic extends Component {
 
     constructor(props) {
         super(props);
-        console.log('technic def props', this.props)
-        this.handleChange = this.handleChange.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
-    handleChange = ({target}) => {
-        console.log('handle')
+    onChange = ({target}) => {
         let v = target.value;
         if (this.props.type === 'number') {
-            v = Math.min(this.props.max, v);
-            v = Math.max(this.props.min, v);
+            v = parseInt(target.value);
+            if (isNaN(v)) return;
         }
         const idx = this.props.idx;
-        const g = update(this.props.game,
-            {
-                hero: {
-                    technics: {
-                        [idx]:
-                            {[this.props.f]: {$set: v}}
-                    }
+        const g = update(this.props.game, {
+            hero: {
+                technics: {
+                    [idx]:
+                        {[this.props.f]: {$set: v}}
                 }
-            });
-        console.log('g', g)
+            }
+        });
         this.props.set_game(g)
     };
 
     render() {
-        console.log('inputT', this.props);
         const idx = this.props.idx;
         const t = this.props.game.hero.technics[idx];
         const fn = this.props.f;
         let value = t[fn];
-        //return this.render_input(fn, value);
-        return <InputTxt2 {...this.props} onChange={this.handleChange} value={value} fn={fn}/>
+        return <InputTxt {...this.props} onChange={this.onChange} value={value} fn={fn}/>
     }
 }
 

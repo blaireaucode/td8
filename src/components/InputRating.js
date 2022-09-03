@@ -9,7 +9,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import InputTxt from "./InputTxt";
+import InputHero from "./InputHero";
 import C from "../helpers/C";
 import SquareIcon from '@mui/icons-material/Square';
 //import CircleIcon from '@mui/icons-material/Circle';
@@ -75,7 +75,7 @@ class InputRating extends Component {
 
                 />
                 <C width={'1ch'}/>
-                <InputTxt f={fn} width={'5ch'} type={'number'} min={this.props.min + this.props.smin}
+                <InputHero f={fn} width={'5ch'} type={'number'} min={this.props.min + this.props.smin}
                           max={this.props.max}/>
                 <span style={{fontSize: '0.9rem', color: 'var(--fgl)'}}>{this.state.hoverValue}</span>
             </span>

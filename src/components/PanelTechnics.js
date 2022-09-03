@@ -9,14 +9,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import C from "../helpers/C";
 import PanelBloc from "./PanelBloc";
-import InputRating from "./InputRating";
 import L from "../navigation/L";
 import update from "immutability-helper";
 import {default_technic} from "../helpers/default_game";
 import {v4 as uuidv4} from "uuid";
 import Technic from "./Technic";
+import C from "../helpers/C";
 
 class PanelTechnics extends Component {
 
@@ -29,25 +28,20 @@ class PanelTechnics extends Component {
         let d = JSON.parse(JSON.stringify(default_technic));
         d.id = uuidv4();
         const g = update(this.props.game, {hero: {technics: {$push: [d]}}});
-        console.log('d', d)
         this.props.set_game(g);
     }
 
     render() {
         const technics = this.props.game.hero.technics;
-        console.log('technics', technics)
         let tech = [];
         for (let t in technics) {
             tech.push(<span><Technic idx={t}/><br/></span>);
         }
         return (
             <PanelBloc name={'technic'} movable={this.props.movable}>
-                Techniques de combat <p/>
-
-                <L onClick={this.addTechnic}>Add</L> <p/>
-
+                Techniques de combat<C width={'1ch'}/>
+                <L onClick={this.addTechnic}>⊕</L> <p/>
                 {tech}
-
             </PanelBloc>
         );
     }

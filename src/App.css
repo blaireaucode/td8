@@ -26,12 +26,16 @@ a:link {
     text-decoration: none; /* remove underline */
 }
 
-a:hover {
-    color: var(--fglh);
+a:link:hover {
+    color: var(--fglh);/* no because visited? */
 }
 
 a:visited {
     color: var(--fgl);
+}
+
+a:visited:hover {
+    color: var(--fglh);
 }
 
 .disabled-linked {

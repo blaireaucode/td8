@@ -9,9 +9,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import InputTxt from "../components/InputTxt";
 import C from "../helpers/C";
-import PanelBloc from "../components/PanelBloc";
 import L from "../navigation/L";
 import default_game from "../helpers/default_game";
 import {update_g_options} from "../helpers/helpers_update";
