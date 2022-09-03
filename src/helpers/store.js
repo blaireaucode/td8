@@ -10,6 +10,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import * as at from './action_types';
 import * as gr from './action_reducers';
 import {create_new_game} from "./helpers_game";
+import default_game from "./default_game";
 
 const store = setupStore()
 export const store_name = 'td8_save'
@@ -22,9 +23,11 @@ export function setupStore() {
     // read from local store (if exist), or start with default
     const saves = read_saves_in_store();
     console.log('load saves', saves);
+    // tentative merge ? no for deep dict
+    //const initialState = Object.assign({}, default_game, saves[saves['current']]);
     const initialState = saves[saves['current']];
     //const initialState = {};
-    //console.log('load save', initialState);
+    console.log('load save', initialState);
 
     // list of action
     const rootReducer = (state = initialState, action) => {

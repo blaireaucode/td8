@@ -16,7 +16,7 @@ import AllDicesResults from "../components/AllDicesResults";
 import HelpCollapsible from "../components/HelpCollapsible";
 import C from "../helpers/C";
 import DeleteIcon from '@mui/icons-material/Delete';
-import ClearIcon from '@mui/icons-material/Clear';
+//import ClearIcon from '@mui/icons-material/Clear';
 
 const diceBox = new DiceBox("#dice-box",
     {

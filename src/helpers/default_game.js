@@ -19,7 +19,7 @@ const default_game = {
             open: false,
             dices: []
         },
-        dice_nb:5,
+        dice_nb: 5,
         dice_results: false,
 
         // position of the blocks
@@ -27,6 +27,7 @@ const default_game = {
         ".acc": [426, 188, 0, 0],
         ".pv": [426, 0, 0, 0],
         ".caract": [0, 188, 0, 0],
+        ".technic": [0, 448, 0, 0]
     },
 
     hero: {
@@ -52,8 +53,9 @@ const default_game = {
         will_power: 1,
         intelligence: 1,
         erudition: 1,
-        charisma: 1
+        charisma: 1,
 
+        technics: [],
     },
 
     items: {},
@@ -62,5 +64,14 @@ const default_game = {
     log: '',
 
 }
-
 export default default_game
+
+export const default_technic =
+    {
+        id: false,
+        name: 'technique',
+        dice: 5,
+        combination: 'combinaison',
+        damage: 1,
+        effect: 'effets'
+    }

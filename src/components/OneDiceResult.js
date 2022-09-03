@@ -17,6 +17,7 @@ import {
 } from "../helpers/helpers_update";
 import L from "../navigation/L";
 
+/*
 const dices = {
     1: '⚀',
     2: '⚁',
@@ -24,7 +25,7 @@ const dices = {
     4: '⚃',
     5: '⚄',
     6: '⚅',
-}
+}*/
 
 class OneDiceResult extends Component {
 

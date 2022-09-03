@@ -85,3 +85,4 @@ export function update_g_swap_dice_right(game, i) {
 export function dice_to_reroll_flag(game, i) {
     return game.options.dice_results.rolls[i].to_reroll;
 }
+

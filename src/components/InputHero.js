@@ -12,19 +12,10 @@ import Input from '@mui/material/Input';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import * as up from '../helpers/helpers_update';
 import update from "immutability-helper";
+import InputTxt from "./InputTxt";
+import InputTxt2 from "./InputTxt2";
 
-class InputTxt extends Component {
-
-    static defaultProps = {
-        type: "txt",
-        width: 50,
-        read_only: false,
-        align: 'left',
-        mod: 0,
-        class_name: 'field_input',
-        min: 0,
-        max: 10000,
-    }
+class InputHero extends Component {
 
     constructor(props) {
         super(props);
@@ -45,27 +36,9 @@ class InputTxt extends Component {
         let c = this.props.game.hero;
         const fn = this.props.f;
         let value = c[fn];
-        return this.render_input(fn, value);
-    }
-
-    render_input(fn, value) {
-        // class name (for style)
-        let align = this.props.align;
-        let cn = this.props.class_name;
-        return (
-            <Input className={cn}
-                   disableUnderline={true}
-                   type={this.props.type}
-                   name={fn}
-                   value={value}
-                   style={{width: this.props.width}}
-                   inputProps={{style: {textAlign: align}}}
-                   readOnly={this.props.read_only}
-                   onChange={this.handleChange}
-            />
-        );
+        return <InputTxt2 {...this.props} onChange={this.handleChange} value={value} fn={fn}/>
     }
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InputTxt);
+export default connect(mapStateToProps, mapDispatchToProps)(InputHero);

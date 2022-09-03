@@ -12,11 +12,12 @@ import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import InputTxt from "./InputTxt";
 import C from "../helpers/C";
 import SquareIcon from '@mui/icons-material/Square';
-import CircleIcon from '@mui/icons-material/Circle';
+//import CircleIcon from '@mui/icons-material/Circle';
 import {Rating} from "@mui/material";
 import * as up from "../helpers/helpers_update";
 
 const Icon = SquareIcon;
+
 //const Icon = CircleIcon;
 
 class MyIcon extends Component {
@@ -24,7 +25,7 @@ class MyIcon extends Component {
     render() {
         const max = this.props.max - this.props.min;
         const min_opacity = 0.3;
-        let op = min_opacity + (1 - min_opacity) / max * (this.props.value-this.props.min);
+        let op = min_opacity + (1 - min_opacity) / max * (this.props.value - this.props.min);
         //if (this.props.hover !== '') op = 1;
         return (<Icon sx={{fontSize: this.props.fontSize}} style={{opacity: op, color: "var(--fgl)"}}/>);
     }

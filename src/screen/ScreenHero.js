@@ -19,6 +19,7 @@ import PanelHero from "../components/PanelHero";
 import PanelAccomplishments from "../components/PanelAccomplishments";
 import PanelPV from "../components/PanelPV";
 import PanelCaract from "../components/PanelCaract";
+import PanelTechnics from "../components/PanelTechnics";
 
 class ScreenHero extends Component {
 
@@ -31,6 +32,12 @@ class ScreenHero extends Component {
 
     toggleMove() {
         this.setState({movable: !this.state.movable});
+        if (this.state.movable) {
+            for (let e in this.props.game.options) {
+                if (e[0] !== ".") continue;
+                console.log('e', e, this.props.game.options[e]);
+            }
+        }
     }
 
     resetPosition() {
@@ -48,7 +55,7 @@ class ScreenHero extends Component {
     }
 
     render() {
-        const t = [0, 500];
+        const t = [0,700];
         const styles = {position: "absolute", transform: `translate(${t[0]}px, ${t[1]}px)`};
         let txt = "Déplacer les blocs";
         let txt2 = "Positions d'origine";
@@ -58,6 +65,7 @@ class ScreenHero extends Component {
         }
         return (
             <div className="container">
+
                 <PanelHero movable={this.state.movable}/>
 
                 <PanelAccomplishments movable={this.state.movable}/>
@@ -66,8 +74,10 @@ class ScreenHero extends Component {
 
                 <PanelCaract movable={this.state.movable}/>
 
+                <PanelTechnics movable={this.state.movable}/>
+
                 <div style={styles}>
-                    <L onClick={this.toggleMove}>{txt}</L> <p/>
+                    <L onClick={this.toggleMove}>{txt}</L> <C width={'3ch'}/>
                     <L onClick={this.resetPosition}>{txt2}</L>
                 </div>
 
