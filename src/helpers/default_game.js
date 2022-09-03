@@ -75,3 +75,13 @@ export const default_technic =
         damage: 1,
         effect: 'effets'
     }
+
+/*
+    id: false,
+name: 'Pluie de lames',
+dice: 7,
+combination: '7 dés <= 13',
+damage: 14,
+effect: 'Démantèlement 7'
+
+*/

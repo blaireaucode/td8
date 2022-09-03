@@ -27,7 +27,7 @@ a:link {
 }
 
 a:link:hover {
-    color: var(--fglh);/* no because visited? */
+    color: var(--fglh); /* no because visited? */
 }
 
 a:visited {
@@ -39,7 +39,7 @@ a:visited:hover {
 }
 
 .disabled-linked {
-    color:var(--fgh);
+    color: var(--fgh);
 }
 
 .App {
@@ -59,6 +59,11 @@ a:visited:hover {
 .field_input:hover {
     background-color: var(--bge);
 }
+
+.field_header {
+    color: var(--fgh) !important;
+}
+
 
 /*-----------------------------------------------------------------------------------------------------------
 Navigation bars
@@ -123,16 +128,26 @@ Dices animation
 
 .dice-reroll {
     font-size: 0.9rem;
-    color: var(--fgl);
     margin-right: 1rem;
     margin-left: -1rem;
 }
+
 
 .dice-label {
     font-size: 1.5rem;
     margin-left: -1rem;
     margin-right: -1rem;
     color: var(--fg);
+}
+
+.dice-label-reroll {
+    position: relative;
+    font-size: 1.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    color: var(--fgh);
+    background: linear-gradient(to left top,
+    transparent 47.75%, currentColor 49.5%, currentColor 50.5%, transparent 52.25%);
 }
 
 .dice-label:hover {

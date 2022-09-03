@@ -38,7 +38,8 @@ class Technic extends Component {
                 <InputTechnic f={'dice'} width={'4ch'} idx={idx} type={'number'}/>
                 <C width={'2ch'}/>
                 <InputTechnic f={'combination'} width={'20ch'} idx={idx}/>
-                <InputTechnic f={'damage'} width={'4ch'} idx={idx}/>
+                <InputTechnic f={'damage'} width={'4ch'} idx={idx} type={'number'}/>
+                <C width={'2ch'}/>
                 <InputTechnic f={'effect'} width={'20ch'} idx={idx}/>
                 <L onClick={this.remove}>✗</L>
             </span>

@@ -58,8 +58,11 @@ class OneDiceResult extends Component {
         const dice = this.props.dice;
         const c = dice_to_reroll_flag(this.props.game, this.props.i);
         //const l = <span className={'dice-label'}>{dices[dice.value]}</span>
-        const l = <span className={'dice-label'}>{dice.value}</span>
         const ci = c ? <span className={'dice-reroll'}>🎲 </span> : '';
+        let l;
+        if (c)
+            l = <span className={'dice-label-reroll'}>{dice.value}</span>
+        else l = <span className={'dice-label'}>{dice.value}</span>
         return (
             <span>
                 <span className={'dice-left'}><L onClick={this.onLeft}> ⬅ </L></span>

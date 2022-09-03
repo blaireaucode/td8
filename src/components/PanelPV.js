@@ -22,19 +22,16 @@ class PanelPV extends Component {
                 <C width={'10ch'}>Niveau:</C>
                 <C width={'20ch'}></C><PanelLevelDice/><br/>
                 <InputRating f={'level'} fontSize={8} max={40} smin={1}/>
-                <br/>
+                <p/>
 
                 <C width={'10ch'}>Points de vie:</C>
                 <InputHero f={'pv'} width={'5ch'} type={'number'}/>
                 <C width={'2ch'}> / </C>
                 <InputHero f={'pv_max'} width={'5ch'} type={'number'}/> (max)
-                <br/>
+                <p/>
 
                 <C width={'10ch'}>Réputation: </C>
                 <InputRating f={'reput'} fontSize={8} max={20} min={-20}/>
-                <br/>
-
-
             </PanelBloc>
         );
     }

@@ -15,7 +15,7 @@ import update from "immutability-helper";
 import {default_technic} from "../helpers/default_game";
 import {v4 as uuidv4} from "uuid";
 import Technic from "./Technic";
-import C from "../helpers/C";
+import FH from "../helpers/FH";
 
 class PanelTechnics extends Component {
 
@@ -39,8 +39,14 @@ class PanelTechnics extends Component {
         }
         return (
             <PanelBloc name={'technic'} movable={this.props.movable}>
-                Techniques de combat<C width={'1ch'}/>
+                Techniques de combat<FH w={'1ch'}/>
                 <L onClick={this.addTechnic}>⊕</L> <p/>
+                <FH w={'17ch'}>Nom</FH>
+                <FH w={'4ch'}>Dés</FH>
+                <FH w={'2ch'}/>
+                <FH w={'16ch'}>Combinaison</FH>
+                <FH w={'7.5ch'}>Dégâts</FH>
+                <FH w={'20ch'}>Effets</FH> <p/>
                 {tech}
             </PanelBloc>
         );
