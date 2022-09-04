@@ -74,7 +74,9 @@ export const default_encounter = {
     pv: 25,
     damage: 5,
     defense: 2,
-    attributes: 'Agressivité (dégâts +2) ; Allonge (-1 dé lors des 2 premiers rounds)'
+    attributes: 'Agressivité (dégâts +2) ; Allonge (-1 dé lors des 2 premiers rounds)',
+    round: 0,
+    roll: 0
 }
 
 export const default_technic =

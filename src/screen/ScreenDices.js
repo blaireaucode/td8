@@ -62,7 +62,10 @@ class ScreenDices extends Component {
     }
 
     throw_dice() {
-        const g = update_g_dice_results(this.props.game, false);
+        let g = update_g_dice_results(this.props.game, false);
+        const r = this.props.game.encounter.round +1;
+        g = update(g, {encounter: {round: {$set: r}}});
+        g = update(g, {encounter: {roll: {$set: 1}}});
         this.props.set_game(g);
         const d = this.props.game.options.dice_nb;
         diceBox.roll(d + 'd6'); // FIXME number of dice
@@ -85,6 +88,9 @@ class ScreenDices extends Component {
         n = n.toString() + 'd6';
         diceBox.roll(n);
         diceBox.show();
+        const r = this.props.game.encounter.roll +1;
+        const g = update(this.props.game, {encounter: {roll: {$set: r}}});
+        this.props.set_game(g);
     }
 
     remove_dice() {

@@ -102,7 +102,7 @@ Dices animation
 #dice-box,
 #dice-box canvas {
     position: fixed;
-    top: 15rem;
+    top: 17rem;
     left: 7rem;
     pointer-events: none;
     z-index: 100;
