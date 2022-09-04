@@ -9,6 +9,7 @@
     --fge: #2982d2; /* edit */
     --bge: #23262d; /* background edit*/
     --bgm: #1b1d21; /* background move*/
+    --help: #807c62
 
 }
 
@@ -82,7 +83,7 @@ Navigation bars
     float: top;
     width: 100%;
     min-height: 3rem;
-    margin-top: 4px;
+    margin-top: 10px;
     margin-left: 9rem;
 }
 
@@ -101,7 +102,7 @@ Dices animation
 #dice-box,
 #dice-box canvas {
     position: fixed;
-    top: 8rem;
+    top: 15rem;
     left: 7rem;
     pointer-events: none;
     z-index: 100;
@@ -195,7 +196,7 @@ help collapse
 .help {
     font-size: calc(0.85em);
     /*color: #aaa;*/
-    color: #807c62;
+    color: var(--help);
     font-weight: normal;
 }
 
@@ -226,4 +227,21 @@ help collapse
 
 .ck-button {
     color: var(--fgh) !important;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+encounter
+-----------------------------------------------------------------------------------------------------------*/
+
+.block-encounter {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--bgm);
+    max-width: 600px;
+    padding: 5px;
+    padding-left: 8px;
+}
+
+.encounter-dead {
+    background-color: #2f1111 !important;
 }

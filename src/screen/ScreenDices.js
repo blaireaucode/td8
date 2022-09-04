@@ -18,6 +18,8 @@ import C from "../helpers/C";
 import DeleteIcon from '@mui/icons-material/Delete';
 import InputTxt from "../components/InputTxt";
 import update from "immutability-helper";
+import Encounter from "../components/Encounter";
+import AddEncounter from "../components/AddEncounter";
 //import ClearIcon from '@mui/icons-material/Clear';
 
 const diceBox = new DiceBox("#dice-box",
@@ -30,12 +32,12 @@ const diceBox = new DiceBox("#dice-box",
         lightIntensity: 0.9,
         scale: 5,
         gravity: 1,
-        mass: 4,
+        mass: 5,
         friction: 0.8,
-        restitution: 0.1, // 0.6
+        restitution: 0.5, // 0.6
         linearDamping: 0.3, // 0.5
         angularDamping: 0.2, // 0.2
-        settleTimeout: 2000
+        settleTimeout: 2500
     }
 );
 
@@ -104,6 +106,7 @@ class ScreenDices extends Component {
         this.props.set_game(g)
     }
 
+
     render() {
         let reroll = '';
         let e = false;
@@ -129,13 +132,12 @@ class ScreenDices extends Component {
         const d = this.props.game.options.dice_nb;
         return (
             <div>
-                <L onClick={this.erase_dice}>{erase}</L>
-                <C width={'2ch'}/>
                 Nombre de dés:
                 <C width={'1ch'}/>
                 <InputTxt onChange={this.changeDice} value={d} fn={'Nombre de dés'} type={'number'}/>
                 <C width={'1ch'}/>
-                <L onClick={this.throw_dice}><C width={'2ch'}/> 🎲 <C width={'2ch'}/></L>
+                <L onClick={this.erase_dice}>{erase}</L>
+                <L onClick={this.throw_dice}><C width={'1ch'}/> 🎲 <C width={'2ch'}/></L>
                 <C width={'3ch'}/>
                 <L onClick={this.reroll} enabled={e}>{reroll}</L>
                 <C width={'5ch'}/>
@@ -146,9 +148,13 @@ class ScreenDices extends Component {
                     </span>
                 </HelpCollapsible>
                 <p/>
-
-                <AllDicesResults/>
+                <AddEncounter/>
+                <p/>
+                <Encounter/>
+                <p/>
+                <C width={'1ch'}/><AllDicesResults/>
                 {trash}
+                <p/>
 
             </div>
         );

@@ -57,9 +57,11 @@ class SavedGame extends Component {
         const save = this.props.save;
         const d = new Date(save.date)
         const e = !(save.id === this.props.current);
+        let del = <L onClick={this.delete}> x </L>;
+        if (save.name === "Diane (Etrigane)") del="";
         let ll = <span>
             <C width={'5ch'}><L onClick={this.load}>load</L></C>
-            <L onClick={this.delete}> x </L>
+            {del}
             </span>
         if (!e) {
             ll = <span>

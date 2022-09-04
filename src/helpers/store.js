@@ -12,6 +12,7 @@ import * as gr from './action_reducers';
 import {create_new_game} from "./helpers_game";
 import default_game, {diane_technic} from "./default_game";
 import {save_to_store} from "./action_reducers";
+import {v4 as uuidv4} from "uuid";
 
 const store = setupStore()
 export const store_name = 'td8_save'
@@ -64,7 +65,11 @@ export function read_saves_in_store() {
 export function add_diane(saves) {
     let new_game = create_new_game();
     new_game.hero.technics = diane_technic;
+    for(let t of new_game.hero.technics) {
+        t.id = uuidv4();
+    }
     new_game.name = "Diane (Etrigane)";
+    console.log('new', new_game);
     saves["diane_default"] = new_game;
 }
 

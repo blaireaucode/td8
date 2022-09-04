@@ -58,6 +58,8 @@ const default_game = {
         technics: [],
     },
 
+    encounter: {},
+
     items: {},
     equipped_items: {},
     skills: {},
@@ -65,6 +67,15 @@ const default_game = {
 
 }
 export default default_game
+
+export const default_encounter = {
+    id: false,
+    name: 'Pillard des cavernes',
+    pv: 25,
+    damage: 5,
+    defense: 2,
+    attributes: 'Agressivité (dégâts +2) ; Allonge (-1 dé lors des 2 premiers rounds)'
+}
 
 export const default_technic =
     {

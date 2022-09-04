@@ -45,6 +45,7 @@ export function merge_dice_results(game, new_res) {
                 roll.value = new_res.rolls[i].value;
                 i += 1;
             }
+            roll['to_reroll'] = false;
         }
         current_res.nb_rolls += 1;
     } else {
