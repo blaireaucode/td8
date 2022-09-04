@@ -53,10 +53,12 @@ class ScreenHero extends Component {
     }
 
     render() {
-        const t = [0,700];
-        const styles = {position: "absolute", transform: `translate(${t[0]}px, ${t[1]}px)`};
+        const t = [0, 0];
+        const styles = {position: "absolute", fontSize:"0.8rem", transform: `translate(${t[0]}px, ${t[1]}px)`};
         let txt = "Déplacer les blocs";
         let txt2 = "Positions d'origine";
+        //let txt = "move";
+        //let txt2 = "✗";
         if (this.state.movable) {
             txt = "Déplacements terminés"
             txt2 = "";
@@ -75,7 +77,7 @@ class ScreenHero extends Component {
                 <PanelTechnics movable={this.state.movable}/>
 
                 <div style={styles}>
-                    <L onClick={this.toggleMove}>{txt}</L> <C width={'3ch'}/>
+                    <L onClick={this.toggleMove}>{txt}</L> <C width={'5ch'}/>
                     <L onClick={this.resetPosition}>{txt2}</L>
                 </div>
 

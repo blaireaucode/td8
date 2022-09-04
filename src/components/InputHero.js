@@ -19,6 +19,11 @@ class InputHero extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
+    static defaultProps = {
+        min: 0,
+        max: 10000,
+    }
+
     onChange = ({target}) => {
         let v = target.value;
         if (this.props.type === 'number') {

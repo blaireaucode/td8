@@ -25,8 +25,9 @@ class PanelPV extends Component {
                 <p/>
 
                 <C width={'10ch'}>Points de vie:</C>
+                <C width={'1ch'}/>
                 <InputHero f={'pv'} width={'5ch'} type={'number'}/>
-                <C width={'2ch'}> / </C>
+                <C width={'1ch'}>/</C>
                 <InputHero f={'pv_max'} width={'5ch'} type={'number'}/> (max)
                 <p/>
 

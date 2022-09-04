@@ -24,7 +24,8 @@ class SavedGame extends Component {
     }
 
     load() {
-        const save = this.props.save;
+        let save = this.props.save;
+        if (save.name === "Diane (Etrigane)") save.name = "Diane";
         this.props.set_game(save);
         this.props.update_store();
     }

@@ -101,14 +101,14 @@ Dices animation
 #dice-box,
 #dice-box canvas {
     position: fixed;
-    top: 7rem;
+    top: 8rem;
     left: 7rem;
     pointer-events: none;
     z-index: 100;
     width: 90%;
     height: 90%;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 600px;
+    max-height: 600px;
     aspect-ratio: auto 1 / 1;
 }
 

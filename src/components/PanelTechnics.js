@@ -35,7 +35,7 @@ class PanelTechnics extends Component {
         const technics = this.props.game.hero.technics;
         let tech = [];
         for (let t in technics) {
-            tech.push(<span><Technic idx={t}/><br/></span>);
+            tech.push(<span><Technic idx={t} key={t}/><br/></span>);
         }
         return (
             <PanelBloc name={'technic'} movable={this.props.movable}>

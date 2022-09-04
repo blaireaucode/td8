@@ -10,7 +10,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import * as at from './action_types';
 import * as gr from './action_reducers';
 import {create_new_game} from "./helpers_game";
-import default_game from "./default_game";
+import default_game, {diane_technic} from "./default_game";
 
 const store = setupStore()
 export const store_name = 'td8_save'
@@ -43,14 +43,30 @@ export function setupStore() {
 }
 
 export function read_saves_in_store() {
+    let saves = "";
     if (global.localStorage.getItem('td8_save') !== null) {
-        return JSON.parse(global.localStorage.getItem('td8_save'));
+        saves = JSON.parse(global.localStorage.getItem('td8_save'));
     } else {
         console.log('Cannot find local storage td8_save : use default');
         const saves = defaultSaves();
         global.localStorage.setItem('td8_save', JSON.stringify(saves));
-        return saves;
     }
+    // add diane ?
+    let found = false;
+    for (let s in saves) {
+        console.log('s', s);
+        if (s.name === "Diane (Etrigane)") found = true;
+    }
+    if (!found) add_diane(saves);
+    return saves;
+}
+
+export function add_diane(saves) {
+    console.log('CREATE DIANE');
+    let new_game = create_new_game();
+    new_game.hero.technics = diane_technic;
+    new_game.name = "Diane (Etrigane)";
+    saves["diane_default"] = new_game;
 }
 
 

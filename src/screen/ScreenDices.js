@@ -16,6 +16,8 @@ import AllDicesResults from "../components/AllDicesResults";
 import HelpCollapsible from "../components/HelpCollapsible";
 import C from "../helpers/C";
 import DeleteIcon from '@mui/icons-material/Delete';
+import InputTxt from "../components/InputTxt";
+import update from "immutability-helper";
 //import ClearIcon from '@mui/icons-material/Clear';
 
 const diceBox = new DiceBox("#dice-box",
@@ -26,7 +28,7 @@ const diceBox = new DiceBox("#dice-box",
         throwForce: 6,
         spinForce: 5,
         lightIntensity: 0.9,
-        scale: 6,
+        scale: 5,
         gravity: 1,
         mass: 4,
         friction: 0.8,
@@ -50,6 +52,7 @@ class ScreenDices extends Component {
         this.get_dice_result = this.get_dice_result.bind(this);
         this.remove_dice = this.remove_dice.bind(this);
         this.erase_dice = this.erase_dice.bind(this);
+        this.changeDice = this.changeDice.bind(this);
         diceBox.onRollComplete = (results) => {
             this.get_dice_result(results);
         }
@@ -59,7 +62,8 @@ class ScreenDices extends Component {
     throw_dice() {
         const g = update_g_dice_results(this.props.game, false);
         this.props.set_game(g);
-        diceBox.roll('5d6'); // FIXME number of dice
+        const d = this.props.game.options.dice_nb;
+        diceBox.roll(d + 'd6'); // FIXME number of dice
         diceBox.show();
     }
 
@@ -92,6 +96,14 @@ class ScreenDices extends Component {
         this.setState({}); // to trigger the 'x'
     }
 
+    changeDice = ({target}) => {
+        let v = target.value;
+        const g = update(this.props.game, {
+            options: {dice_nb: {$set: v}}
+        });
+        this.props.set_game(g)
+    }
+
     render() {
         let reroll = '';
         let e = false;
@@ -114,23 +126,19 @@ class ScreenDices extends Component {
             trash =
                 <span className={'dice-trash'}><L onClick={this.remove_dice}><DeleteIcon fontSize={'small'}/></L></span>
         }
+        const d = this.props.game.options.dice_nb;
         return (
             <div>
-                <C width={'25ch'}>
-                    <L onClick={this.throw_dice}>Lancer tous les dés</L>
-                    <C width={'1ch'}/>
-                    <L onClick={this.erase_dice}>{erase}</L>
-                </C>
-
-                <L onClick={this.reroll} enabled={e}>{reroll}</L> <p/>
-                <p/>
-
-                <AllDicesResults/>
-
-                {trash}
-
-                <p/>
-                <p/>
+                <L onClick={this.erase_dice}>{erase}</L>
+                <C width={'2ch'}/>
+                Nombre de dés:
+                <C width={'1ch'}/>
+                <InputTxt onChange={this.changeDice} value={d} fn={'Nombre de dés'} type={'number'}/>
+                <C width={'1ch'}/>
+                <L onClick={this.throw_dice}><C width={'2ch'}/> 🎲 <C width={'2ch'}/></L>
+                <C width={'3ch'}/>
+                <L onClick={this.reroll} enabled={e}>{reroll}</L>
+                <C width={'5ch'}/>
                 <HelpCollapsible>
                     <span>
                         Une fois les dés lancés, sélectionnez les dés à relancer. <p/>
@@ -138,6 +146,9 @@ class ScreenDices extends Component {
                     </span>
                 </HelpCollapsible>
                 <p/>
+
+                <AllDicesResults/>
+                {trash}
 
             </div>
         );

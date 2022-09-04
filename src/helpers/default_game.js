@@ -23,11 +23,11 @@ const default_game = {
         dice_results: false,
 
         // position of the blocks
-        ".hero": [0, 0, 0, 0],
-        ".acc": [426, 188, 0, 0],
-        ".pv": [426, 0, 0, 0],
-        ".caract": [0, 188, 0, 0],
-        ".technic": [0, 448, 0, 0]
+        ".hero": [0, 30, 0, 0],
+        ".acc": [426, 228, 0, 0],
+        ".pv": [426, 30, 0, 0],
+        ".caract": [0, 228, 0, 0],
+        ".technic": [0, 490, 0, 0]
     },
 
     hero: {
@@ -47,13 +47,13 @@ const default_game = {
         level: 1,
         reput: 0,
 
-        robustness: 1,
-        dexterity: 1,
-        beauty: 1,
-        will_power: 1,
-        intelligence: 1,
-        erudition: 1,
-        charisma: 1,
+        robustness: 10,
+        dexterity: 16,
+        beauty: 12,
+        will_power: 15,
+        intelligence: 10,
+        erudition: 7,
+        charisma: 11,
 
         technics: [],
     },
@@ -76,12 +76,66 @@ export const default_technic =
         effect: 'effets'
     }
 
+export const diane_technic =
+    [
+        {
+            id: false,
+            name: 'Mille épines',
+            dice: 8,
+            combination: '?',
+            damage: 0,
+            effect: '?'
+        },
+        {
+            id: false,
+            name: 'Pluie de lames',
+            dice: 7,
+            combination: '7 dés <= 13',
+            damage: 14,
+            effect: 'Démantèlement 7'
+        },
+        {
+            id: false,
+            name: 'Tornade ciselée',
+            dice: 6,
+            combination: '7 dés <= 13',
+            damage: 14,
+            effect: 'Démantèlement 7'
+        },
+        {
+            id: false,
+            name: 'Faille invisible',
+            dice: 5,
+            combination: '4 dés <= 8',
+            damage: 6,
+            effect: 'Démantèlement 3'
+        },
+        {
+            id: false,
+            name: 'Aiguille acérée',
+            dice: 5,
+            combination: '2 dés <= 4',
+            damage: 5,
+            effect: 'Hémorragie 2'
+        },
+        {
+            id: false,
+            name: 'Feinte de corps',
+            dice: 5,
+            combination: 'un 6',
+            damage: 2,
+            effect: ''
+        },
+        {
+            id: false,
+            name: 'Grâce du chat',
+            dice: 5,
+            combination: '3 dés <=5',
+            damage: 5,
+            effect: 'Accélération 1'
+        },
+    ]
 /*
-    id: false,
-name: 'Pluie de lames',
-dice: 7,
-combination: '7 dés <= 13',
-damage: 14,
-effect: 'Démantèlement 7'
+
 
 */
