@@ -90,17 +90,17 @@ export const diane_technic =
             id: false,
             name: 'Pluie de lames',
             dice: 7,
-            combination: '7 dés <= 13',
+            combination: '?',
             damage: 14,
-            effect: 'Démantèlement 7'
+            effect: '?'
         },
         {
             id: false,
             name: 'Tornade ciselée',
             dice: 6,
-            combination: '7 dés <= 13',
+            combination: '?',
             damage: 14,
-            effect: 'Démantèlement 7'
+            effect: '?'
         },
         {
             id: false,

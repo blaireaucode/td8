@@ -20,7 +20,7 @@ function sleep(ms) {
 }
 */
 
-async function save_to_store(game) {
+export async function save_to_store(game) {
     //await sleep(2000);
 
     // update the date

@@ -14,6 +14,7 @@ import Input from "@mui/material/Input";
 import * as st from "../helpers/store";
 import update from "immutability-helper";
 import C from "../helpers/C";
+import {v4 as uuidv4} from "uuid";
 
 class SavedGame extends Component {
 
@@ -25,7 +26,10 @@ class SavedGame extends Component {
 
     load() {
         let save = this.props.save;
-        if (save.name === "Diane (Etrigane)") save.name = "Diane";
+        if (save.name === "Diane (Etrigane)") {
+            save.name = "Diane";
+            save.id = uuidv4();
+        }
         this.props.set_game(save);
         this.props.update_store();
     }
@@ -60,7 +64,6 @@ class SavedGame extends Component {
         if (!e) {
             ll = <span>
                 <C width={'5ch'}>✔</C>
-                <L onClick={this.delete}> x </L>
             </span>
         }
         return (
