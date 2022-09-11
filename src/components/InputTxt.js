@@ -24,6 +24,7 @@ class InputTxt extends Component {
         class_name: 'field_input',
         min: 0,
         max: 10000,
+        multiline: true
     }
 
     render() {
@@ -31,12 +32,17 @@ class InputTxt extends Component {
         const cn = this.props.class_name;
         const fn = this.props.fn;
         const value = this.props.value;
+        let m = this.props.multiline;
+        if (this.props.type === "number") {
+            m = false;
+        }
         return (
             <Input className={cn}
                    disableUnderline={true}
                    type={this.props.type}
                    name={fn}
                    value={value}
+                   multiline={m}
                    style={{width: this.props.width}}
                    inputProps={{style: {textAlign: align}}}
                    readOnly={this.props.read_only}

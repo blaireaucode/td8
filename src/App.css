@@ -210,10 +210,11 @@ help collapse
 
 .ck {
     border: 0 !important;
+    margin-top: 7px;
 }
 
 .ck-content {
-    background-color: var(--bg) !important;
+    background-color: var(--bge) !important;
 }
 
 .ck-toolbar {
@@ -228,6 +229,7 @@ help collapse
 .ck-button {
     color: var(--fgh) !important;
 }
+
 
 /*-----------------------------------------------------------------------------------------------------------
 encounter

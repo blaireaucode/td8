@@ -23,6 +23,7 @@ class InputEncounter extends Component {
     static defaultProps = {
         min: 0,
         max: 10000,
+        type: "txt"
     }
 
     onChange = ({target}) => {

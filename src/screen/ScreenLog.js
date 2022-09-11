@@ -10,6 +10,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
 import Log from '../components/Log';
+import C from "../helpers/C";
 
 class ScreenLog extends Component {
 
@@ -18,7 +19,9 @@ class ScreenLog extends Component {
         return (
             <div>
                 Carnet de campagne<p/>
+                <C width={'100ch'}>
                 <Log/>
+                </C>
             </div>
         );
     }

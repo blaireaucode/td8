@@ -15,6 +15,7 @@ import C from "../helpers/C";
 import L from "../navigation/L";
 import DeleteIcon from "@mui/icons-material/Delete";
 import update from "immutability-helper";
+import EncounterLog from "./EncounterLog";
 
 class Encounter extends Component {
 
@@ -61,8 +62,11 @@ class Encounter extends Component {
                 <FH w={'8ch'}>Défense : </FH>
                 <InputEncounter f={'defense'} width={'5ch'} type={'number'}/>
 
+                <br/>
+                <EncounterLog/>
+
                 <p/>
-                <C width={'15ch'}>---</C>
+                <C width={'15ch'}></C>
                 <FH w={'18  ch'}>Round :<C width={'1ch'}/>
                     <InputEncounter f={'round'} width={'5ch'} type={'number'}/>
                 </FH>
@@ -71,7 +75,7 @@ class Encounter extends Component {
                     <InputEncounter f={'roll'} width={'5ch'} type={'number'}/>
                 </FH>
                 <C width={'11ch'}/>
-                <C width={'3ch'}>---</C>
+                <C width={'3ch'}></C>
                 <br/>
 
             </div>
