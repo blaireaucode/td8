@@ -34,12 +34,10 @@ class Encounter extends Component {
     logEncounter() {
         let e = JSON.parse(JSON.stringify(this.props.game.encounter));
         e['nb'] = this.props.game.past_encounters.length;
-        console.log('e', e);
         let g = update(this.props.game,
             {past_encounters: {$push: [e]}});
-        // FIXME g = update(g, {encounter: {$set: {}}});
+        g = update(g, {encounter: {$set: {}}});
         this.props.set_game(g);
-        console.log('g', g.past_encounters);
     }
 
     render() {

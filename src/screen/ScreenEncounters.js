@@ -30,19 +30,18 @@ class ScreenEncounters extends Component {
 
     render() {
         const g = this.props.game;
-        console.log('g', g)
         const encounters = [];
         let i = 0;
         for (let e of g.past_encounters) {
-            console.log('ee', e)
             encounters.push(<EncounterPast e={e} key={i}/>)
             i += 1;
         }
         return (
             <span>
-                 Headers à faire
-                <L onClick={this.cleanAllEncounters}>CLEAN</L>
+                {/*<L onClick={this.cleanAllEncounters}>CLEAN</L>*/}
+                Liste des rencontres
                 <p/>
+                <br/>
                 <C width={'6ch'}/>
                 <FH w={'25.5ch'}>Nom</FH>
                 <FH w={'5.5ch'}>PV</FH>

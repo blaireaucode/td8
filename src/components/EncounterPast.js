@@ -9,7 +9,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props';
-import FH from "../helpers/FH";
 import InputEncounterPast from "./InputEncounterPast";
 import C from "../helpers/C";
 import L from "../navigation/L";
@@ -41,7 +40,6 @@ class EncounterPast extends Component {
 
     render() {
         const e = this.props.e;
-        console.log('ee', e)
         if (!("name" in e)) return "";
         return (
             <span>
