@@ -14,7 +14,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {update_dic} from "../helpers/helpers_update";
 import update from "immutability-helper";
 import FH from "../helpers/FH";
-import InputEncounter from "./InputEncounter";
 
 class EncounterLog extends Component {
 
@@ -24,7 +23,7 @@ class EncounterLog extends Component {
         super(props);
         this.config = {
             //toolbar: ['heading', 'bold', 'italic', 'blockQuote'],
-            toolbar: [],
+            toolbar: [ ],
             heading: {
                 options: [
                     {model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph'},
@@ -37,18 +36,35 @@ class EncounterLog extends Component {
     }
 
     render() {
-        const e = this.props.game.encounter;
-        let s = 'var(--bge)';
-        if (e.pv <= 0) {
-            s = 'var(--dead)';
-        }
         return (
             <span>
                 <FH>Commentaires :</FH>
                 <br/>
-                <div style={{backgroundColor: s}}>
-                <InputEncounter f={'com'} width={'65ch'}/>
-                </div>
+                <CKEditor
+                    className={'ck-encounter'}
+                    editor={ClassicEditor}
+                    config={this.config}
+                    data={this.props.game.encounter.log}
+                    onReady={editor => {
+                        // You can store the "editor" and use when it is needed.
+                        editor.setData(this.props.game.encounter.log);
+                    }}
+                    onChange={(event, editor) => {
+                        const data = editor.getData();
+                        //console.log('change', {event, editor, data});
+                        //const g = update_dic(this.props.game, 'log', data);
+                        const g = update(this.props.game, {
+                            encounter: {log: {$set: data}}
+                        });
+                        this.props.set_game(g);
+                    }}
+                    onBlur={(event, editor) => {
+                        //console.log('Blur.', editor);
+                    }}
+                    onFocus={(event, editor) => {
+                        //console.log('Focus.', editor);
+                    }}
+                />
             </span>
         );
     }

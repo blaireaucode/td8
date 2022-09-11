@@ -18,6 +18,7 @@ import ScreenGames from "../screen/ScreenGames";
 import ScreenResetStore from "../screen/ScreenResetStore";
 import ScreenDices from "../screen/ScreenDices";
 import ScreenLog from "../screen/ScreenLog";
+import ScreenEncounters from "../screen/ScreenEncounters";
 
 class AllRoutes extends Component {
 
@@ -32,6 +33,7 @@ class AllRoutes extends Component {
                 <Route path="/debug" element={<ScreenDebug/>}/>
                 <Route path="/dices" element={<ScreenDices/>}/>
                 <Route path="/log" element={<ScreenLog/>}/>
+                <Route path="/encounters" element={<ScreenEncounters/>}/>
                 <Route path="/resetStore" element={<ScreenResetStore/>}/>
             </Routes>
         );

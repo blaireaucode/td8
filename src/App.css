@@ -9,7 +9,8 @@
     --fge: #2982d2; /* edit */
     --bge: #23262d; /* background edit*/
     --bgm: #1b1d21; /* background move*/
-    --help: #807c62
+    --help: #807c62;
+    --dead: #2f1111
 
 }
 
@@ -230,7 +231,6 @@ help collapse
     color: var(--fgh) !important;
 }
 
-
 /*-----------------------------------------------------------------------------------------------------------
 encounter
 -----------------------------------------------------------------------------------------------------------*/
@@ -240,10 +240,9 @@ encounter
     border-width: 1px;
     border-color: var(--bgm);
     max-width: 600px;
-    padding: 5px;
-    padding-left: 8px;
+    padding: 5px 5px 5px 8px;
 }
 
 .encounter-dead {
-    background-color: #2f1111 !important;
+    background-color: var(--dead)!important;
 }

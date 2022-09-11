@@ -63,7 +63,7 @@ class ScreenDices extends Component {
 
     throw_dice() {
         let g = update_g_dice_results(this.props.game, false);
-        const r = this.props.game.encounter.round +1;
+        const r = this.props.game.encounter.round + 1;
         g = update(g, {encounter: {round: {$set: r}}});
         g = update(g, {encounter: {roll: {$set: 1}}});
         this.props.set_game(g);
@@ -88,7 +88,7 @@ class ScreenDices extends Component {
         n = n.toString() + 'd6';
         diceBox.roll(n);
         diceBox.show();
-        const r = this.props.game.encounter.roll +1;
+        const r = this.props.game.encounter.roll + 1;
         const g = update(this.props.game, {encounter: {roll: {$set: r}}});
         this.props.set_game(g);
     }
@@ -148,10 +148,8 @@ class ScreenDices extends Component {
                 <L onClick={this.reroll} enabled={e}>{reroll}</L>
                 <C width={'5ch'}/>
                 <HelpCollapsible>
-                    <span>
-                        Une fois les dés lancés, sélectionnez les dés à relancer. <p/>
-                        Les flèches servent à déplacer les dés pour mieux repérer des configurations.<p/>
-                    </span>
+                    Une fois les dés lancés, sélectionnez les dés à relancer. <p/>
+                    Les flèches servent à déplacer les dés pour mieux repérer des configurations.<p/>
                 </HelpCollapsible>
                 <p/>
                 <AddEncounter/>
