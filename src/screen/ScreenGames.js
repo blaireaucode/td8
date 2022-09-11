@@ -13,6 +13,7 @@ import * as st from '../helpers/store';
 import L from '../navigation/L.js';
 import SavedGame from '../components/SavedGame';
 import {create_new_game} from "../helpers/helpers_game";
+import {add_diane, read_saves_in_store} from "../helpers/store";
 
 class ScreenGames extends Component {
 
@@ -21,11 +22,20 @@ class ScreenGames extends Component {
         this.clearStore = this.clearStore.bind(this);
         this.reset = this.reset.bind(this);
         this.update_store = this.update_store.bind(this);
+        this.add_Diane = this.add_Diane.bind(this);
         this.state = {store: st.read_saves_in_store()};
     }
 
     update_store() {
         this.setState({store: st.read_saves_in_store()});
+    }
+
+    add_Diane() {
+        let saves = read_saves_in_store();
+        add_diane(saves);
+        this.clearStore();
+        global.localStorage.setItem('td8_save', JSON.stringify(saves));
+        this.update_store();
     }
 
     clearStore() {
@@ -55,8 +65,9 @@ class ScreenGames extends Component {
                 Sauvegardes:<p/>
                 {list}
                 <br/>
-                <L onClick={this.reset}>Start a new game</L><p/>
-                <L onClick={this.clearStore}> ⚠ Clear store ⚠</L>
+                <L onClick={this.reset}>Nouvelle partie</L><p/>
+                <L onClick={this.clearStore}> ⚠ tout effacer ⚠</L><p/>
+                <L onClick={this.add_Diane}> Diane </L>
             </div>
         )
     }

@@ -53,12 +53,6 @@ export function read_saves_in_store() {
         saves = defaultSaves();
         global.localStorage.setItem('td8_save', JSON.stringify(saves));
     }
-    // add diane ?
-    let found = false;
-    for (let s in saves) {
-        if (saves[s].name === "Diane (Etrigane)") found = true;
-    }
-    if (!found) add_diane(saves);
     return saves;
 }
 
@@ -68,9 +62,8 @@ export function add_diane(saves) {
     for(let t of new_game.hero.technics) {
         t.id = uuidv4();
     }
-    new_game.name = "Diane (Etrigane)";
-    console.log('new', new_game);
-    saves["diane_default"] = new_game;
+    new_game.name = "Diane";
+    saves[new_game.id] = new_game;
 }
 
 
