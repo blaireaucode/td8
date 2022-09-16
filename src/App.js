@@ -25,6 +25,7 @@ function App() {
             <BrowserRouter>
                 <NavigationBar/>
                 <div className="App">
+
                     <AllRoutes/>
                 </div>
 

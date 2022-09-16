@@ -14,9 +14,9 @@ import {mapDispatchToProps, mapStateToProps} from "../helpers/default_props";
 class LeftBar extends Component {
 
     render() {
-        let f = '';
+        let f = '⚔️';
         if ("name" in this.props.game.encounter)
-            f = '⚔️';
+            f = '⚔️ !';
         return (
             <div id="sidebar">
                 <div className="vl"/>

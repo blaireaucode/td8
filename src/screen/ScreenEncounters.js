@@ -11,7 +11,6 @@ import {connect} from 'react-redux'
 import {mapDispatchToProps, mapStateToProps} from '../helpers/default_props'
 import EncounterPast from "../components/EncounterPast";
 import update from "immutability-helper";
-import L from "../navigation/L";
 import FH from "../helpers/FH";
 import C from "../helpers/C";
 
@@ -39,7 +38,7 @@ class ScreenEncounters extends Component {
         return (
             <span>
                 {/*<L onClick={this.cleanAllEncounters}>CLEAN</L>*/}
-                Liste des rencontres
+                Liste des rencontres passées
                 <p/>
                 <br/>
                 <C width={'6ch'}/>

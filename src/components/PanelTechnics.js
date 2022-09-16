@@ -36,7 +36,7 @@ class PanelTechnics extends Component {
         let tech = [];
         let i=0;
         for (let t in technics) {
-            tech.push(<span><Technic idx={t} key={i}/><br/></span>);
+            tech.push(<span key={i}><Technic idx={t} key={i}/><br/></span>);
             i+=1;
         }
         return (
